@@ -28,6 +28,9 @@ Route::get('/contact', function () {
 Route::get('/players', function () {
     return view('user/players');
 });
+Route::get('/create-pool', function () {
+    return view('user/createPool');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
