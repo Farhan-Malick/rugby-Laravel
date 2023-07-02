@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\PoolController;
 use App\Http\Middleware\AdminAuth;
 
 
@@ -27,5 +28,10 @@ Route::group(['middleware'=> 'adminauth'], function(){
     Route::get('/Admin/add-Teams', [TeamController::class, 'index']);
     Route::post('/Admin/add-team', [TeamController::class, 'store']);
     Route::get('/Admin/Team/delete/{id}', [TeamController::class, 'delete']);
+
+    // Create Pool
+    Route::get('/Admin/Pool-Listing', [PoolController::class, 'PoolListings']);
+    Route::get('/Admin/Pool-Form', [PoolController::class, 'PoolForm']);
+    Route::Post('/Admin/CreatePool', [PoolController::class, 'CreatePools']);
 });
 });

@@ -18,29 +18,31 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
+    @include('layouts.header2')
 
-    @include('layouts.header')
 
-    <div class="hero overlay" style="background-image: url('{{asset('assets/images/banner2.jpg')}}'); ">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-5 ml-auto">
-            <h2 class="text-white">START A NEW POOL</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae pariatur.</p>
-            <div id="date-countdown"></div>
-            <p>
-              <a href="#" class="btn btn-primary py-3 px-4 mr-3">Start new pool</a>
-              <a href="#" class="more light">Learn More</a>
-            </p>
-          </div>
+   <div class="container">
+    <h1 class="text-center text-light mt-5 mb-5">
+        START A NEW POOL
+    </h1>
+    <p class="text-center">Select the sport and game type of the pool you want to run below.</p>
+
+        <div class="row">
+            @foreach ($Pools as $pool)
+                <div class="col-md-5 ml-5 mr-2 border 1px p-4 mb-5" style="border-radius: 10px">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="{{asset('uploads/PoolFromAdmin/' . $pool->poolimage)}}" alt="" style="border-radius:10px" width="100%" height="60px">
+                        </div>
+                        <div class="col-md-7"><h4>{{$pool->poolname}}</h4><p>{{$pool->pool_category}}</p></div>
+                        <div class="col-md-3"><a href="{{URL('set-pool/'.$pool->id)}}" class="btn btn-secondary">Select</a></div>
+                    </div>
+                </div>
+            @endforeach
         </div>
-      </div>
-    </div>
-
-
+   </div>
 @include('layouts.footer')
 
-  </div>
   <!-- .site-wrap -->
 
   @include('layouts.scriptingLinks')

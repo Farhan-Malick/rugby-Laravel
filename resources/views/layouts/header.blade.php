@@ -3,10 +3,8 @@
     <div class="container">
       <div class="d-flex align-items-center">
         <div class="site-logo">
-          <a href="index.html">
             <h2><a href="{{URL('/')}}" class="nav-link">RUGBY</a></h2>
             {{-- <img src="{{asset('assets/images/logo.png')}}" alt="Logo"> --}}
-          </a>
         </div>
         <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
@@ -33,6 +31,8 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
+                                <a href="{{URL('/profile')}}" class="nav-link">Profile</a>
+                                <a href="{{URL('/myPicks')}}" class="nav-link">My Picks</a>
                             </div>
                         </li>
                     @else

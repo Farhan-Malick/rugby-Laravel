@@ -50,6 +50,17 @@
 					{{-- <li><a href="email_detail.html">Detail</a></li> --}}
 				</ul>
 			</li>
+            <li class="has-sub">
+				<a href="javascript:;">
+					<span class="badge pull-right">10</span>
+					<i class="fa fa-hdd"></i>
+					<span>Create Pool</span>
+				</a>
+				<ul class="sub-menu">
+                    <li><a href="{{URL('/Admin/Pool-Form')}}">Add Pool For Client Site</a></li>
+					<li><a href="{{URL('/Admin/Pool-Listing')}}">All Pools For Client Site</a></li>
+				</ul>
+			</li>
 			<li class="has-sub">
 				<a href="javascript:;">
 					<span class="badge pull-right">10</span>
@@ -65,14 +76,14 @@
 			{{-- <li>
 				<a href="widget.html">
 					<i class="fab fa-simplybuilt"></i>
-					<span>Widgets <span class="label label-theme">NEW</span></span> 
+					<span>Widgets <span class="label label-theme">NEW</span></span>
 				</a>
 			</li>
 			<li class="has-sub">
 				<a href="javascript:;">
 					<b class="caret"></b>
 					<i class="fa fa-gem"></i>
-					<span>UI Elements <span class="label label-theme">NEW</span></span> 
+					<span>UI Elements <span class="label label-theme">NEW</span></span>
 				</a>
 				<ul class="sub-menu">
 					<li><a href="ui_general.html">General <i class="fa fa-paper-plane text-theme"></i></a></li>
@@ -97,14 +108,14 @@
 					<div class="icon-img">
 						<img src="{{asset('/adminassets/img/logo/logo-bs4.png')}}" alt="" />
 					</div>
-					<span>Bootstrap 4 <span class="label label-theme">NEW</span></span> 
+					<span>Bootstrap 4 <span class="label label-theme">NEW</span></span>
 				</a>
 			</li>
 			<li class="has-sub">
 				<a href="javascript:;">
 					<b class="caret"></b>
 					<i class="fa fa-list-ol"></i>
-					<span>Form Stuff <span class="label label-theme">NEW</span></span> 
+					<span>Form Stuff <span class="label label-theme">NEW</span></span>
 				</a>
 				<ul class="sub-menu">
 					<li><a href="form_elements.html">Form Elements <i class="fa fa-paper-plane text-theme"></i></a></li>
@@ -187,7 +198,7 @@
 			</li>
 			<li>
 				<a href="calendar.html">
-					<i class="fa fa-calendar"></i> 
+					<i class="fa fa-calendar"></i>
 					<span>Calendar</span>
 				</a>
 			</li>
@@ -213,7 +224,7 @@
 					<li><a href="gallery_v2.html">Gallery v2</a></li>
 				</ul>
 			</li> --}}
-			
+
 			<!-- begin sidebar minify button -->
 			<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
 			<!-- end sidebar minify button -->

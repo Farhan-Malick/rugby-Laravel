@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\PoolController;
+use App\Http\Controllers\PickController;
 use App\Http\Controllers\Auth\LoginController;
 
 
@@ -28,9 +31,18 @@ Route::get('/contact', function () {
 Route::get('/players', function () {
     return view('user/players');
 });
-Route::get('/create-pool', function () {
-    return view('user/createPool');
-});
+// Route::get('/create-pool', function () {
+//     return view('user/createPool');
+// });
+Route::get('/create-pool', [PoolController::class, 'Client_Pool_Show']);
+Route::get('/set-pool/{pool_id}', [PoolController::class, 'Set_Pool_Show']);
+Route::post('/set-pool-submit/{pool_id}', [PoolController::class, 'submit_set_Pool']);
+Route::get('/myPicks', [PickController::class, 'myPicksTable']);
+//PROFILE SECTION
+Route::get('/profile', [PoolController::class, 'profile']);
+
+Route::post('/submit-picks', [PickController::class, 'submitPicks'])->name('submit-picks');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

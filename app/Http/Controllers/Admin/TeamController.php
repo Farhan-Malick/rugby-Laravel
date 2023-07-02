@@ -15,7 +15,7 @@ class TeamController extends Controller
     public function index()
     {
         // $teams = Team::all();
-        return view('Admin.pages.createTeam');
+        return view('Admin.pages.CreateTeams.createTeam');
     }
     public function store(Request $request)
     {
@@ -61,7 +61,7 @@ class TeamController extends Controller
     public function allTeams()
     {
         $Teams = Team::all();
-        return view('Admin.pages.allTeams',compact('Teams'));
+        return view('Admin.pages.CreateTeams.allTeams',compact('Teams'));
     }
     public function delete($id, Request $request){
         $Teams = Team::find($id);
