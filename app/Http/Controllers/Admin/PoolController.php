@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Pool;
 use App\Models\SetPool;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -13,7 +14,7 @@ class PoolController extends Controller
 {
     public function PoolListings (){
         $PoolListings = Pool::get();
-        return view('Admin.pages.CreatePool.allPools',compact('PoolListings'));
+        return View('Admin.pages.CreatePool.allPools',compact('PoolListings'));
     }
     public function PoolForm (){
         return view('Admin.pages.CreatePool.createPoolForClient');
@@ -39,9 +40,13 @@ class PoolController extends Controller
         return redirect('Admin/Pool-Form');
     }
     // Client Section
-    public function profile (){
-        return view('user.profile');
+    public function profile()
+    {
+        $user = auth()->user();
+        $setPools = $user->setPools;
+        return view('user.profile', compact('setPools'));
     }
+
     public function Client_Pool_Show (){
         $Pools = Pool::get();
         return view('user.createPool',compact('Pools'));
@@ -59,7 +64,7 @@ class PoolController extends Controller
         $setPool->pool_week = $request->input('pool_week');
         $setPool->save();
 
-        return back()->with('success','Pool has been set');
+        return redirect()->route('profile')->with('success','Pool has been set');
     }
 
 }

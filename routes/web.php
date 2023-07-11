@@ -34,12 +34,14 @@ Route::get('/players', function () {
 // Route::get('/create-pool', function () {
 //     return view('user/createPool');
 // });
-Route::get('/create-pool', [PoolController::class, 'Client_Pool_Show']);
-Route::get('/set-pool/{pool_id}', [PoolController::class, 'Set_Pool_Show']);
+Route::get('/create-pool', [PoolController::class, 'Client_Pool_Show'])->middleware('auth');
+
+Route::get('/set-pool/{pool_id}', [PoolController::class, 'Set_Pool_Show'])->middleware('auth');
 Route::post('/set-pool-submit/{pool_id}', [PoolController::class, 'submit_set_Pool']);
-Route::get('/myPicks', [PickController::class, 'myPicksTable']);
+Route::get('/myPicks', [PickController::class, 'myPicksTable'])->middleware('auth');
 //PROFILE SECTION
-Route::get('/profile', [PoolController::class, 'profile']);
+Route::get('/profile', [PoolController::class, 'profile'])->middleware('auth')->name('profile');
+
 
 Route::post('/submit-picks', [PickController::class, 'submitPicks'])->name('submit-picks');
 
