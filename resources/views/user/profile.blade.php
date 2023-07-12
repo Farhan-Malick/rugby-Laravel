@@ -227,18 +227,18 @@
                     </div>
                 </div>
             </div>
-            {{-- section set pools show --}}
             <div>
                 <div class="row">
-                    @if(isset($setPools))
+                    @if(!empty($setPools) && count($setPools) > 0)
                     @foreach($setPools as $pool)
                     <div class="col-md-6 mb-5">
-                        <div class="border p-3 team-box" data-team-id="1" style="border-radius: 10px">
+                        <div class="border p-3 team-box" data-team-id="1"
+                            style="border-radius: 10px; background-color: #f8f9fa;">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <p style="font-weight: bold; color: white; display: inline;">{{
+                                    <p style="font-weight: bold; color: #343a40; display: inline;">{{
                                         $pool->user->first_name }}</p>
-                                    <span style="display: inline;font-weight: bold; color: white;">{{
+                                    <span style="display: inline; font-weight: bold; color: #343a40;">{{
                                         $pool->user->last_name }}</span>
                                 </div>
 
@@ -246,26 +246,27 @@
                                     <div class="text-right mb-2">
                                         <span class="badge badge-dark">{{ $pool->pool_week }}</span>
                                     </div>
-                                    <h4 class="text-white">{{ $pool->pool_name }}</h4>
+                                    <h4 class="text-dark">{{ $pool->pool_name }}</h4>
                                     <p>{{ $pool->pool_format }}</p>
+                                    <p>{{ $pool->pool_spread }}</p>
+
                                     <div class="text-right">
-                                        <small class="text-white">{{ $pool->created_at->diffForHumans() }}</small>
+                                        <small class="text-muted">{{ $pool->created_at->diffForHumans() }}</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     @endforeach
                     @else
-                    <div class="text-center mt-5">
+                    <div class="col-12 text-center mt-5">
                         <h3>No Pool is Set</h3>
-                        <p class="text-muted">Start creating your pools now!</p>
-                        <a href="{{ route('pool.create') }}" class="btn btn-primary">Create Pool</a>
+                        <p class="text-white">Start creating your pools now!</p>
+                        <a href="{{ url('/create-pool') }}" class="btn btn-primary mb-5">Create Pool</a>
                     </div>
                     @endif
-
                 </div>
-
             </div>
 
             {{-- end section set pools show --}}
