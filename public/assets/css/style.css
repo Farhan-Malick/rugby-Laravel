@@ -17,11 +17,6 @@ body {
     color: #fff;
 }
 
-.site-menu .nav-link:hover {
-    background-color: #343a40; /* Replace with your desired dark background color */
-    color: #fff; /* Replace with your desired text color */
-}
-
 a {
     -webkit-transition: 0.3s all ease;
     -o-transition: 0.3s all ease;
