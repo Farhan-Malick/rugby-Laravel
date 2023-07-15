@@ -137,17 +137,18 @@
                                         </div>
                                         <!-- end form-group -->
                                         <!-- begin form-group -->
-                                        <div class="form-group row m-b-10">
+                                        <!-- <div class="form-group row m-b-10">
                                             <label class="col-lg-3 text-lg-right col-form-label">Total</label>
                                             <div class="col-lg-9 col-xl-6">
                                                 <input type="number" name="total" placeholder="Total" data-parsley-group="step-1" data-parsley-required="true" class="form-control" />
                                             </div>
-                                        </div>
+                                        </div> -->
 
 
-                                        <div>
-                                            <button class="btn btn-primary">Sunmit</button>
+                                        <div class="d-flex justify-content-center">
+                                            <button class="btn btn-primary">Submit</button>
                                         </div>
+
                                         <!-- end form-group -->
                                     </div>
                                     <!-- end col-8 -->
