@@ -3,27 +3,46 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pick;
 use App\Models\ScoreChart;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PicksController extends Controller
 {
-    public function ScoreChartForm()
+    public function ScoreChartForm($id)
     {
-        return view('Admin.allpicks.score_chart');
+        $user = User::findOrFail($id);
+        $picks = $user->picks;
+
+        return view('Admin.allpicks.score_chart', compact('user', 'picks'));
     }
 
-    public function store(Request $request)
+    public function updateScoreChart(Request $request, $id)
     {
-        $score_chart = new ScoreChart();
-        $score_chart->round1 = $request['round1'];
-        $score_chart->round2 = $request['round2'];
-        $score_chart->total = $request['round1'] + $request['round2'];
+        try {
+            $user = User::find($id);
+            if (!$user) {
+                return redirect()->back()->with('error', 'User not found');
+            }
 
-        $score_chart->save();
+            // Retrieve the input values from the request
+            $round1 = $request->input('round1');
+            $round2 = $request->input('round2');
+            $total = $round1 + $round2;
 
-        return redirect()->back();
+            // Update the user's picks data
+            $user->picks()->update([
+                'round1' => $round1,
+                'round2' => $round2,
+                'total' => $total,
+            ]);
 
-
+            return redirect()->route('users_picks')->with('success', 'Score chart updated successfully');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
+
+
 }

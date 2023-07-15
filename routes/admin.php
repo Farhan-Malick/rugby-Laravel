@@ -41,8 +41,9 @@ Route::group(['middleware'=> 'adminauth'], function(){
 
     Route::get('/Admin/Users-picks', [PoolController::class, 'userPicks'])->name('users_picks');
 
-    Route::get('/Admin/Score-chart',[PicksController::class,'ScoreChartForm'])->name('score_chart_form');
-    Route::post('Admin/add-score_chart', [PicksController::class, 'store'])->name('save_score_chart');
+    Route::get('/Admin/Score-chart/{id}',[PicksController::class,'ScoreChartForm'])->name('score_chart_form');
+    Route::post('/Admin/Score-chart/{id}', [PicksController::class, 'updateScoreChart'])->name('save_score_chart');
+
 
 
 

@@ -92,8 +92,8 @@
             @endif
             <!-- end page-header -->
             <!-- begin wizard-form -->
-            <form action="{{ url('Admin/add-score_chart') }}" method="POST" enctype="multipart/form-data"
-            class="form-control-with-bg">
+            <form action="{{ route('save_score_chart', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data" class="form-control-with-bg">
+
                 @csrf
                 <!-- begin wizard -->
                 <div id="wizard">

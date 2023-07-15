@@ -16,6 +16,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('teamname')->nullable();
             $table->integer('points')->nullable();
+            $table->integer('round1')->nullable();
+            $table->integer('round2')->nullable();
+            $table->integer('total')->nullable();
             $table->timestamps();
         });
     }

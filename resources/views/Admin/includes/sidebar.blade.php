@@ -94,7 +94,6 @@
                 </a>
                 <ul class="sub-menu">
                     <li><a href="{{route('users_picks')}}">All Users Picks</a></li>
-                    <li><a href="{{route('score_chart_form')}}">Score Chart Form</a></li>
                     <!-- <li><a href="email_detail.html">Detail</a></li> -->
                 </ul>
             </li>

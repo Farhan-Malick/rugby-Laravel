@@ -125,34 +125,90 @@
                                 @foreach($users as $key => $user)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $user->first_name ?? 'null' }}</td>
-                                    <td>demo</td>
-                                    <td>demo</td>
-                               <td>
-                               @foreach($user->picks as $pick)
-                                        @if($pick->points == 6)
-                                            <p>{{ $pick->teamname ?? 'null' }}</p>
-                                        @endif
-                                    @endforeach
-                               </td>
-                                <td>
-                                @foreach($user->picks as $pick)
-                                        @if($pick->points == 4)
-                                            <p>{{ $pick->teamname ?? 'null' }}</p>
-                                        @endif
-                                    @endforeach
-                                </td>
-                                  <td>
-                                  @foreach($user->picks as $pick)
-                                        @if($pick->points == 2)
-                                            <p>{{ $pick->teamname ?? 'null' }}</p>
-                                        @endif
-                                    @endforeach
-                                  </td>
-                                    <td>total</td>
+                                    <td>{{ $user->first_name ?? 'Null' }}</td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->round1) {
+                                                    $teamname = $pick->round1;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->round2) {
+                                                    $teamname = $pick->round2;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->points == 6) {
+                                                    $teamname = $pick->teamname;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->points == 4) {
+                                                    $teamname = $pick->teamname;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->points == 2) {
+                                                    $teamname = $pick->teamname;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->total) {
+                                                    $teamname = $pick->total;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('score_chart_form', ['id' => $user->id]) }}">
+                                            <button class="btn btn-primary">Edit</button>
+                                        </a>
+                                    </td>
+
+
                                 </tr>
                                 @endforeach
                             </tbody>
+
                         </table>
 
                     </div>
