@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\PoolController;
 use App\Http\Controllers\PickController;
 use App\Http\Controllers\Auth\LoginController;
-
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PicksController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\PoolController;
@@ -33,5 +34,17 @@ Route::group(['middleware'=> 'adminauth'], function(){
     Route::get('/Admin/Pool-Listing', [PoolController::class, 'PoolListings']);
     Route::get('/Admin/Pool-Form', [PoolController::class, 'PoolForm']);
     Route::Post('/Admin/CreatePool', [PoolController::class, 'CreatePools']);
+
+
+    // All users picks controller
+
+
+    Route::get('/Admin/Users-picks', [PoolController::class, 'userPicks'])->name('users_picks');
+
+    Route::get('/Admin/Score-chart',[PicksController::class,'ScoreChartForm'])->name('score_chart_form');
+    Route::post('Admin/add-score_chart', [PicksController::class, 'store'])->name('save_score_chart');
+
+
+
 });
 });
