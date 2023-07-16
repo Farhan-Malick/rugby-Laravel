@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Pool;
+use App\Models\Admin\Team;
+use App\Models\Pick;
 use App\Models\SetPool;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
@@ -69,5 +72,17 @@ class PoolController extends Controller
 
         return redirect()->route('profile')->with('success','Pool has been set');
     }
+
+
+
+
+    public function userPicks()
+    {
+        $users = User::has('picks')->get();
+
+        return view('Admin.allpicks.all_user_picks', compact('users'));
+    }
+
+
 
 }

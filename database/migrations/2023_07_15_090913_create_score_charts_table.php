@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('picks', function (Blueprint $table) {
+        Schema::create('score_charts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('teamname')->nullable();
-            $table->integer('points')->nullable();
+            $table->integer('round1');
+            $table->integer('round2');
+            $table->integer('total');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('picks');
+        Schema::dropIfExists('score_charts');
     }
 };

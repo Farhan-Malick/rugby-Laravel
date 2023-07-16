@@ -15,15 +15,15 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="{{asset('adminassets/css/google/app.min.css')}}" rel="stylesheet" />
+    <link href="{{ asset("adminassets/css/google/app.min.css") }}" rel="stylesheet" />
 
 <!-- ================== END BASE CSS STYLE ================== -->
 
 <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
-<link href="{{asset('adminassets/plugins/jvectormap-next/jquery-jvectormap.css')}}" rel="stylesheet" />
-<link href="{{asset('adminassets/plugins/bootstrap-calendar/css/bootstrap_calendar.css')}}" rel="stylesheet" />
-<link href="{{asset('adminassets/plugins/gritter/css/jquery.gritter.css')}}" rel="stylesheet" />
-<link href="{{asset('adminassets/plugins/nvd3/build/nv.d3.css')}}" rel="stylesheet" />
+<link href="{{ asset("adminassets/plugins/jvectormap-next/jquery-jvectormap.css") }}" rel="stylesheet" />
+<link href="{{ asset("adminassets/plugins/bootstrap-calendar/css/bootstrap_calendar.css") }}" rel="stylesheet" />
+<link href="{{ asset("adminassets/plugins/gritter/css/jquery.gritter.css") }}" rel="stylesheet" />
+<link href="{{ asset("adminassets/plugins/nvd3/build/nv.d3.css") }}" rel="stylesheet" />
 
 </head>
 
@@ -71,7 +71,7 @@
                 <!-- begin page-header -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4>All Teams</h4>
+                        <h4>All Users Picks</h4>
                         @if (session('msg'))
                         <div class="col-sm-6 mx-auto alert alert-primary" style="text-align: center;  font-size:20px">
                             <b>{{ session('msg') }}</b>
@@ -107,53 +107,110 @@
                     <!-- begin panel-body -->
                     <div class="panel-body">
 
-                        <table id="data-table-default"
-                            class="table table-striped table-bordered table-td-valign-middle">
+                        <table id="data-table-default" class="table table-striped table-bordered table-td-valign-middle">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Team Name</th>
-                                    <th scope="col">Captain</th>
-                                    <th scope="col">Coach</th>
-                                    <th scope="col">Team-Colour</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Venue</th>
-                                    <th scope="col">Thumbnail</th>
-                                    <th scope="col">Poster</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Round 1</th>
+                                    <th scope="col">Round 2</th>
+                                    <th scope="col">Points 6</th>
+                                    <th scope="col">Point 4</th>
+                                    <th scope="col">Point 2</th>
+                                    <th scope="col">Total</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($Teams as $team)
+                                @foreach($users as $key => $user)
                                 <tr>
-                                    <td>{{$team->id}}</td>
-                                    <td>{{$team->tname}}</td>
-                                    <td>{{$team->team_captain}}</td>
-                                    <td>{{$team->coach_name}}</td>
-                                    <td>{{$team->tcolor}}</td>
-                                    <td>{{$team->description}}</td>
-                                    <td>{{$team->venue}}</td>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $user->first_name ?? 'Null' }}</td>
                                     <td>
-                                        <img src="{{ asset('uploads/Teams/thumbnail/' . $team->thumbnail) }}"
-                                            class="img-rounded height-30 width-30" />
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->round1) {
+                                                    $teamname = $pick->round1;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
                                     </td>
                                     <td>
-                                        <img src="{{ asset('uploads/Teams/poster/' . $team->poster) }}"
-                                            class="img-rounded height-30 width-30" />
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->round2) {
+                                                    $teamname = $pick->round2;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
                                     </td>
                                     <td>
-                                        {{-- <a class="btn btn-primary"
-                                            href="{{ URL('/Admin-Panel/Edit-team/' . $team->id) }}">edit</a> --}}
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->points == 6) {
+                                                    $teamname = $pick->teamname;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->points == 4) {
+                                                    $teamname = $pick->teamname;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->points == 2) {
+                                                    $teamname = $pick->teamname;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->total) {
+                                                    $teamname = $pick->total;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('score_chart_form', ['id' => $user->id]) }}">
+                                            <button class="btn btn-primary">Edit</button>
+                                        </a>
+                                    </td>
 
-                                        <a class="btn btn-danger"
-                                            href="{{ URL('/Admin/Team/delete/' . $team->id) }}">Delete</a>
-                                    </td>
 
                                 </tr>
                                 @endforeach
-
                             </tbody>
+
                         </table>
+
                     </div>
                     <!-- end panel-body -->
                 </div>
@@ -201,22 +258,22 @@
     </div>
     {{-- Modal for rejectio end --}}
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="{{asset('adminassets/js/app.min.js')}}"></script>
-<script src="{{asset('adminassets/js/theme/google.min.js')}}"></script>
+    <script src="{{ asset("adminassets/js/app.min.js") }}"></script>
+<script src="{{ asset("adminassets/js/theme/google.min.js") }}"></script>
 <!-- ================== END BASE JS ================== -->
 
 <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-<script src="{{asset('adminassets/plugins/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('adminassets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('adminassets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('adminassets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{asset('adminassets/js/demo/table-manage-default.demo.js')}}"></script>
-<script src="{{asset('adminassets/plugins/d3/d3.min.js')}}"></script>
-<script src="{{asset('adminassets/plugins/nvd3/build/nv.d3.min.js')}}"></script>
-<script src="{{asset('adminassets/plugins/jvectormap-next/jquery-jvectormap.min.js')}}"></script>
-<script src="{{asset('adminassets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js')}}"></script>
-<script src="{{asset('adminassets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js')}}"></script>
-<script src="{{asset('adminassets/plugins/gritter/js/jquery.gritter.js')}}"></script>
+<script src="{{ asset('adminassets/plugins/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('adminassets/js/demo/table-manage-default.demo.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/d3/d3.min.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/nvd3/build/nv.d3.min.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/jvectormap-next/jquery-jvectormap.min.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/gritter/js/jquery.gritter.js') }}"></script>
 
     <script>
         COLOR_BLUE = COLOR_INDIGO = COLOR_RED = COLOR_ORANGE = COLOR_LIME = COLOR_TEAL = 'rgba(0,0,0,0.5)';

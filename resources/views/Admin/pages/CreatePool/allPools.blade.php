@@ -9,21 +9,21 @@
     <meta content="" name="author" />
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
-    <link href="{{asset('adminassets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}"
-        rel="stylesheet" />
-    <link href="{{asset('adminassets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="{{asset(" adminassets/css/google/app.min.css")}}" rel="stylesheet" />
+    />
+    <link href="{{ asset("adminassets/plugins/nvd3/build/nv.d3.css") }}" rel="stylesheet" />
+<link href="{{ asset('adminassets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+<link href="{{ asset('adminassets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link href="{{ asset("adminassets/css/google/app.min.css") }}" rel="stylesheet" />
 
-    <!-- ================== END BASE CSS STYLE ================== -->
+<!-- ================== END BASE CSS STYLE ================== -->
 
-    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
-    <link href="{{asset(" adminassets/plugins/jvectormap-next/jquery-jvectormap.css")}}" rel="stylesheet" />
-    <link href="{{asset(" adminassets/plugins/bootstrap-calendar/css/bootstrap_calendar.css")}}" rel="stylesheet" />
-    <link href="{{asset(" adminassets/plugins/gritter/css/jquery.gritter.css")}}" rel="stylesheet" />
-    <link href="{{asset(" adminassets/plugins/nvd3/build/nv.d3.css")}}" rel="stylesheet" />
+<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+<link href="{{ asset("adminassets/plugins/jvectormap-next/jquery-jvectormap.css") }}" rel="stylesheet" />
+<link href="{{ asset("adminassets/plugins/bootstrap-calendar/css/bootstrap_calendar.css") }}" rel="stylesheet" />
+<link href="{{ asset("adminassets/plugins/gritter/css/jquery.gritter.css") }}" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -154,34 +154,34 @@
 
     {{-- Modal for rejectio end --}}
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="{{asset(" adminassets/js/app.min.js")}}"></script>
-    <script src="{{asset(" adminassets/js/theme/google.min.js")}}"></script>
-    <!-- ================== END BASE JS ================== -->
+    <script src="{{ asset("adminassets/js/app.min.js") }}"></script>
+<script src="{{ asset("adminassets/js/theme/google.min.js") }}"></script>
+<!-- ================== END BASE JS ================== -->
 
-    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-    <script src="{{asset('adminassets/plugins/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('adminassets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('adminassets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('adminassets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}">
-    </script>
-    <script src="{{asset('adminassets/js/demo/table-manage-default.demo.js')}}"></script>
-    <script src="{{asset(" adminassets/plugins/d3/d3.min.js")}}"></script>
-    <script src="{{asset(" adminassets/plugins/nvd3/build/nv.d3.min.js")}}"></script>
-    <script src="{{asset(" adminassets/plugins/jvectormap-next/jquery-jvectormap.min.js")}}"></script>
-    <script src="{{asset(" adminassets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js")}}"></script>
-    <script src="{{asset(" adminassets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js")}}"></script>
-    <script src="{{asset(" adminassets/plugins/gritter/js/jquery.gritter.js")}}"></script>
-    <script>
-        COLOR_BLUE = COLOR_INDIGO = COLOR_RED = COLOR_ORANGE = COLOR_LIME = COLOR_TEAL = 'rgba(0,0,0,0.5)';
-		COLOR_AQUA = COLOR_DARK_LIGHTER = COLOR_GREEN = 'rgba(0,0,0,0.75)';
-    </script>
+<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+<script src="{{ asset('adminassets/plugins/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('adminassets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('adminassets/js/demo/table-manage-default.demo.js') }}"></script>
+<script src="{{ asset("adminassets/plugins/d3/d3.min.js") }}"></script>
+<script src="{{ asset("adminassets/plugins/nvd3/build/nv.d3.min.js") }}"></script>
+<script src="{{ asset("adminassets/plugins/jvectormap-next/jquery-jvectormap.min.js") }}"></script>
+<script src="{{ asset("adminassets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js") }}"></script>
+<script src="{{ asset("adminassets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js") }}"></script>
+<script src="{{ asset("adminassets/plugins/gritter/js/jquery.gritter.js") }}"></script>
+<script>
+    COLOR_BLUE = COLOR_INDIGO = COLOR_RED = COLOR_ORANGE = COLOR_LIME = COLOR_TEAL = 'rgba(0,0,0,0.5)';
+    COLOR_AQUA = COLOR_DARK_LIGHTER = COLOR_GREEN = 'rgba(0,0,0,0.75)';
+</script>
 
-    <script src="{{asset(" adminassets/js/demo/dashboard-v2.js")}}"></script>
-    <script>
-        $('#rejectionModal').on('show.bs.modal', function (e) {
-            $("#ticket_id").val($(e.relatedTarget).data('id'));
-        });
-    </script>
+<script src="{{ asset("adminassets/js/demo/dashboard-v2.js") }}"></script>
+<script>
+    $('#rejectionModal').on('show.bs.modal', function (e) {
+        $("#ticket_id").val($(e.relatedTarget).data('id'));
+    });
+</script>
+
     <!-- ================== END PAGE LEVEL JS ================== -->
 </body>
 

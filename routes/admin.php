@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PicksController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\PoolController;

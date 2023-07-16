@@ -59,6 +59,8 @@
             box-shadow: none !important;
         }
     </style>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -286,7 +288,7 @@
                                         }
                                     </style>
 
-                                    <form action="{{ route('submit-picks') }}" method="post" id="team-selection-form">
+                                        <form action="{{ route('submit-picks') }}" method="post" id="team-selection-form">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box"
@@ -391,9 +393,65 @@
             </div>
         </div>
         <!-- Add the following script at the bottom of your HTML file -->
+        //     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
+
+
+    <!-- old script for picks -->
+    //     <script>
+    //         $(document).ready(function() {
+    // $('#team-selection-form').submit(function(event) {
+    //     event.preventDefault();
+
+    //     var selectedTeams = [];
+    //     $('.team-box.selected').each(function(index) {
+    //         var teamId = $(this).data('team-id');
+    //         var teamName = $(this).find('h4').text();
+    //         selectedTeams.push({ id: teamId, name: teamName, priority: index + 1 });
+    //     });
+
+    //         // Send the selected team IDs and names to the server
+    //         $.ajax({
+    //             url: '{{ route('submit-picks') }}',
+    //             method: 'POST',
+    //             data: {
+    //                 teams: selectedTeams,
+    //                 _token: '{{ csrf_token() }}'
+    //             },
+    //             success: function(response) {
+    //                 // Handle the success response
+    //                 console.log(response);
+    //                 // Redirect the user to a specific URL
+    //                 window.location.href = '{{ URL('/myPicks') }}';
+    //             },
+    //             error: function(xhr) {
+    //                 // Handle the error response
+    //                 console.error(xhr);
+    //                 // Optionally, you can show an error message to the user
+    //             }
+    //         });
+    //     });
+    // });
+    //     </script>
+
+    <!-- end old script -->
+
+
+
+        @include('layouts.footer')
+
+        <!-- .site-wrap -->
+
+        @include('layouts.scriptingLinks')
+
+
+</body>
+
+
+<script>
             $(document).ready(function() {
         $('.team-box').click(function() {
             // Get the parent row
@@ -407,18 +465,33 @@
         });
     });
         </script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function() {
-    $('#team-selection-form').submit(function(event) {
-        event.preventDefault();
 
-        var selectedTeams = [];
-        $('.team-box.selected').each(function(index) {
-            var teamId = $(this).data('team-id');
-            var teamName = $(this).find('h4').text();
-            selectedTeams.push({ id: teamId, name: teamName, priority: index + 1 });
-        });
+
+<script>
+    $(document).ready(function() {
+        $('#team-selection-form').submit(function(event) {
+            event.preventDefault();
+
+            var selectedTeams = [];
+            $('.team-box.selected').each(function(index) {
+                var teamId = $(this).data('team-id');
+                var teamName = $(this).find('h4').text();
+
+                // Check if the team is already selected
+                if (selectedTeams.some(team => team.id === teamId)) {
+                    // Display an error message using SweetAlert
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'You have already selected the team ' + teamName,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    return false; // Exit the loop and prevent form submission
+                }
+
+                selectedTeams.push({ id: teamId, name: teamName, priority: index + 1 });
+            });
 
             // Send the selected team IDs and names to the server
             $.ajax({
@@ -431,8 +504,15 @@
                 success: function(response) {
                     // Handle the success response
                     console.log(response);
-                    // Redirect the user to a specific URL
-                    window.location.href = '{{ URL('/myPicks') }}';
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Picks submitted successfully',
+                        showConfirmButton: false,
+                        timer: 2000
+                    }).then(function() {
+                        window.location.href = '{{ URL('/myPicks') }}';
+                    });
                 },
                 error: function(xhr) {
                     // Handle the error response
@@ -442,20 +522,36 @@
             });
         });
     });
-        </script>
+</script>
 
 
 
 
+<script>
+    $(document).ready(function() {
+        $('.team-box').click(function() {
+            // Check if the user already has three picks
+            var userPicksCount = {{ $user->picks()->count() }};
+            if (userPicksCount >= 3) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'You have already selected three teams',
+                });
+                return;
+            }
 
+            // Get the parent row
+            var row = $(this).closest('.row');
 
-        @include('layouts.footer')
+            // Remove the 'selected' class from all team boxes within the same row
+            row.find('.team-box').removeClass('selected');
 
-        <!-- .site-wrap -->
+            // Toggle the 'selected' class for the clicked team box
+            $(this).toggleClass('selected');
+        });
+    });
+</script>
 
-        @include('layouts.scriptingLinks')
-
-
-</body>
 
 </html>
