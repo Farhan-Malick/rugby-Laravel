@@ -231,29 +231,29 @@
             </div>
             <div>
                 <div class="row">
-                    @if(!empty($setPools) && count($setPools) > 0)
-                    @foreach($setPools as $pool)
+                    @if(!empty($pool) && count($pool) > 0)
+                    @foreach($pool as $pools)
                     <div class="col-md-6 mb-5">
                         <div class="border p-3 team-box" data-team-id="1"
                             style="border-radius: 10px; background-color: #f8f9fa;">
                             <div class="row">
                                 <div class="col-md-4">
                                     <p style="font-weight: bold; color: #343a40; display: inline;">{{
-                                        $pool->user->first_name }}</p>
-                                    <span style="display: inline; font-weight: bold; color: #343a40;">{{
-                                        $pool->user->last_name }}</span>
+                                        $pools->name }}</p>
+                                    {{-- <span style="display: inline; font-weight: bold; color: #343a40;">{{
+                                        $pools->user->last_name }}</span> --}}
                                 </div>
 
                                 <div class="col-md-8">
                                     <div class="text-right mb-2">
-                                        <span class="badge badge-dark">{{ $pool->pool_week }}</span>
+                                        <span class="badge badge-dark">{{ $pools->pool_week }}</span>
                                     </div>
-                                    <h4 class="text-dark">{{ $pool->pool_name }}</h4>
-                                    <p>{{ $pool->pool_format }}</p>
-                                    <p>{{ $pool->pool_spread }}</p>
+                                    <h4 class="text-dark">{{ $pools->pool_name }}</h4>
+                                    <p>{{ $pools->pool_format }}</p>
+                                    <p>{{ $pools->pool_spread }}</p>
 
                                     <div class="text-right">
-                                        <small class="text-muted">{{ $pool->created_at->diffForHumans() }}</small>
+                                        <small class="text-muted">{{ $pools->created_at->diffForHumans() }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -330,7 +330,6 @@
                                                             style="border-radius:10px" height="60px">
                                                     </div>
                                                     <div class="col-md-8">
-
                                                         <h4 class="text-dark">Italy</h4>
                                                         <p>Sports</p>
                                                     </div>

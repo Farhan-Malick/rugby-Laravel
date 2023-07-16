@@ -69,5 +69,10 @@ class TeamController extends Controller
         $request->session()->flash('msg','Team Has Been Deleted Successfully');
         return redirect()->back();
     }
+    public function setupTeam()
+    {
+        // $teams = Team::all();
+        return view('Admin.pages.CreateTeams.setupTeams');
+    }
 
 }

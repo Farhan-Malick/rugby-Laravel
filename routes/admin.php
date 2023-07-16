@@ -29,23 +29,13 @@ Route::group(['middleware'=> 'adminauth'], function(){
     Route::get('/Admin/add-Teams', [TeamController::class, 'index']);
     Route::post('/Admin/add-team', [TeamController::class, 'store']);
     Route::get('/Admin/Team/delete/{id}', [TeamController::class, 'delete']);
+    Route::get('/Admin/Set-up-Teams', [TeamController::class, 'setupTeam']);
+
 
     // Create Pool
     Route::get('/Admin/Pool-Listing', [PoolController::class, 'PoolListings']);
     Route::get('/Admin/Pool-Form', [PoolController::class, 'PoolForm']);
     Route::Post('/Admin/CreatePool', [PoolController::class, 'CreatePools']);
-
-
-    // All users picks controller
-
-
-    Route::get('/Admin/Users-picks', [PoolController::class, 'userPicks'])->name('users_picks');
-
-    Route::get('/Admin/Score-chart/{id}',[PicksController::class,'ScoreChartForm'])->name('score_chart_form');
-    Route::post('/Admin/Score-chart/{id}', [PicksController::class, 'updateScoreChart'])->name('save_score_chart');
-
-
-
 
 });
 });

@@ -45,9 +45,12 @@ class PoolController extends Controller
     // Client Section
     public function profile()
     {
-        $user = auth()->user();
-        $setPools = $user->setPools;
-        return view('user.profile', compact('setPools','user'));
+        // $user = auth()->user();
+        $pool = SetPool::select('set_pools.*', 'users.first_name as name')
+        ->join('users', 'set_pools.user_id', '=', 'users.id')
+        ->get();
+        // $setPools = $user->setPools;
+        return view('user.profile', compact('pool'));
     }
 
     public function Client_Pool_Show (){
