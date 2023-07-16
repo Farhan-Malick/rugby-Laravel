@@ -194,79 +194,122 @@
               <table class="table custom-table">
                 <thead>
                   <tr>
-                    <th>P</th>
-                    <th>Team</th>
-                    <th>W</th>
-                    <th>D</th>
-                    <th>L</th>
-                    <th>PTS</th>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Round 1</th>
+                    <th>Round 2</th>
+                    <th>points 6</th>
+                    <th>points 4</th>
+                    <th>points 2</th>
+                    <th>Total</th>
+
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td><strong class="text-white">Rugby League</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td><strong class="text-white">Rugby</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td><strong class="text-white">Juvendo</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td><strong class="text-white">French Rugby League</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td><strong class="text-white">Legia Abante</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td><strong class="text-white">Gliwice League</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td><strong class="text-white">Cornika</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
-                  <tr>
-                    <td>8</td>
-                    <td><strong class="text-white">Gravity Smash</strong></td>
-                    <td>22</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>140</td>
-                  </tr>
+                <tbody class="text-white">
+                @foreach($users as $key => $user)
+
+                        @php
+                                $round1 = null;
+                                $round2 = null;
+                                $total = null;
+
+                                foreach($user->picks as $pick) {
+                                    if(!$round1 && $pick->round1) {
+                                        $round1 = $pick->round1;
+                                    }
+
+                                    if(!$round2 && $pick->round2) {
+                                        $round2 = $pick->round2;
+                                    }
+
+                                    if(!$total && $pick->total) {
+                                        $total = $pick->total;
+                                    }
+                                }
+                        @endphp
+                                    @if($round1 && $round2 && $total)
+
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $user->first_name ?? 'Null' }}</td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->round1) {
+                                                    $teamname = $pick->round1;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->round2) {
+                                                    $teamname = $pick->round2;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->points == 6) {
+                                                    $teamname = $pick->teamname;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->points == 4) {
+                                                    $teamname = $pick->teamname;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->points == 2) {
+                                                    $teamname = $pick->teamname;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $teamname = null;
+                                            foreach($user->picks as $pick) {
+                                                if($pick->total) {
+                                                    $teamname = $pick->total;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                    </td>
+
+
+
+                                </tr>
+        @endif
+                                @endforeach
                 </tbody>
               </table>
             </div>

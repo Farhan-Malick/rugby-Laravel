@@ -239,15 +239,8 @@
 				</ul>
 			</li> --}}
 
-<!--
-            <li class="">
-                <a href="{{ route('users_picks') }}">
-                    <span class="badge pull-right"></span>
-                    <i class="fa fa-hdd"></i>
-                    <span>Aall Users Picks</span>
-                </a>
 
-            </li> -->
+
 
 
             <li class="has-sub">

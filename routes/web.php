@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\PoolController;
 use App\Http\Controllers\PickController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -19,9 +20,7 @@ use Illuminate\Support\Facades\Auth;
 */
 Route::get('/login', [LoginController::class])->name("login");
 
-Route::get('/', function () {
-    return view('user/index');
-});
+Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/matches', function () {
     return view('user/matches');
 });

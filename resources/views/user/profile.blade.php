@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     {{-- <title>Rugby &mdash; </title> --}}
     @include('layouts.headLinks')
@@ -8,11 +7,9 @@
         .main-body {
             padding: 15px;
         }
-
         .card {
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
         }
-
         .card {
             position: relative;
             display: flex;
@@ -24,37 +21,30 @@
             border: 0 solid rgba(0, 0, 0, .125);
             border-radius: .25rem;
         }
-
         .card-body {
             flex: 1 1 auto;
             min-height: 1px;
             padding: 1rem;
         }
-
         .gutters-sm {
             margin-right: -8px;
             margin-left: -8px;
         }
-
         .gutters-sm>.col,
         .gutters-sm>[class*=col-] {
             padding-right: 8px;
             padding-left: 8px;
         }
-
         .mb-3,
         .my-3 {
             margin-bottom: 1rem !important;
         }
-
         .bg-gray-300 {
             background-color: #e2e8f0;
         }
-
         .h-100 {
             height: 100% !important;
         }
-
         .shadow-none {
             box-shadow: none !important;
         }
@@ -62,11 +52,8 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-
 <body>
-
     <div class="site-wrap">
-
         <div class="site-mobile-menu site-navbar-target">
             <div class="site-mobile-menu-header">
                 <div class="site-mobile-menu-close">
@@ -76,11 +63,8 @@
             <div class="site-mobile-menu-body"></div>
         </div>
         @include('layouts.header2')
-
-
         <div class="container-fluid">
             <div class="main-body">
-
                 <!-- Breadcrumb -->
                 <nav aria-label="breadcrumb" class="main-breadcrumb">
                     <ol class="breadcrumb">
@@ -90,7 +74,6 @@
                     </ol>
                 </nav>
                 <!-- /Breadcrumb -->
-
                 <div class="row gutters-sm">
                     <div class="col-md-4 mb-3">
                         <div class="card">
@@ -231,35 +214,32 @@
             </div>
             <div>
                 <div class="row">
-                    @if(!empty($pool) && count($pool) > 0)
-                    @foreach($pool as $pools)
+                    @if(!empty($setPools) && count($setPools) > 0)
+                    @foreach($setPools as $pool)
                     <div class="col-md-6 mb-5">
                         <div class="border p-3 team-box" data-team-id="1"
                             style="border-radius: 10px; background-color: #f8f9fa;">
                             <div class="row">
                                 <div class="col-md-4">
                                     <p style="font-weight: bold; color: #343a40; display: inline;">{{
-                                        $pools->name }}</p>
-                                    {{-- <span style="display: inline; font-weight: bold; color: #343a40;">{{
-                                        $pools->user->last_name }}</span> --}}
+                                        $pool->user->first_name }}</p>
+                                    <span style="display: inline; font-weight: bold; color: #343a40;">{{
+                                        $pool->user->last_name }}</span>
                                 </div>
-
                                 <div class="col-md-8">
                                     <div class="text-right mb-2">
-                                        <span class="badge badge-dark">{{ $pools->pool_week }}</span>
+                                        <span class="badge badge-dark">{{ $pool->pool_week }}</span>
                                     </div>
-                                    <h4 class="text-dark">{{ $pools->pool_name }}</h4>
-                                    <p>{{ $pools->pool_format }}</p>
-                                    <p>{{ $pools->pool_spread }}</p>
-
+                                    <h4 class="text-dark">{{ $pool->pool_name }}</h4>
+                                    <p>{{ $pool->pool_format }}</p>
+                                    <p>{{ $pool->pool_spread }}</p>
                                     <div class="text-right">
-                                        <small class="text-muted">{{ $pools->created_at->diffForHumans() }}</small>
+                                        <small class="text-muted">{{ $pool->created_at->diffForHumans() }}</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     @endforeach
                     @else
                     <div class="col-12 text-center mt-5">
@@ -270,9 +250,7 @@
                     @endif
                 </div>
             </div>
-
             {{-- end section set pools show --}}
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="row gutters-sm">
@@ -281,7 +259,6 @@
                                 <div class="card-body">
                                     <h6 class="d-flex align-items-center mb-3"><i
                                             class="material-icons text-info mr-2">Team Selection Form</h6>
-
                                     <style>
                                         .team-box.selected {
                                             outline: 2px solid blue;
@@ -299,7 +276,6 @@
                                                             style="border-radius:10px" height="60px">
                                                     </div>
                                                     <div class="col-md-8">
-
                                                         <h4 class="text-dark">Wales</h4>
                                                         <p>Sports</p>
                                                     </div>
@@ -314,7 +290,6 @@
                                                             style="border-radius:10px" height="60px">
                                                     </div>
                                                     <div class="col-md-8">
-
                                                         <h4 class="text-dark">Ireland</h4>
                                                         <p>Sports</p>
                                                     </div>
@@ -344,7 +319,6 @@
                                                             style="border-radius:10px" height="60px">
                                                     </div>
                                                     <div class="col-md-8">
-
                                                         <h4 class="text-dark">France</h4>
                                                         <p>Sports</p>
                                                     </div>
@@ -395,24 +369,18 @@
         <!-- Add the following script at the bottom of your HTML file -->
         //     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
     <!-- old script for picks -->
     //     <script>
     //         $(document).ready(function() {
     // $('#team-selection-form').submit(function(event) {
     //     event.preventDefault();
-
     //     var selectedTeams = [];
     //     $('.team-box.selected').each(function(index) {
     //         var teamId = $(this).data('team-id');
     //         var teamName = $(this).find('h4').text();
     //         selectedTeams.push({ id: teamId, name: teamName, priority: index + 1 });
     //     });
-
     //         // Send the selected team IDs and names to the server
     //         $.ajax({
     //             url: '{{ route('submit-picks') }}',
@@ -436,37 +404,23 @@
     //     });
     // });
     //     </script>
-
     <!-- end old script -->
-
-
-
         @include('layouts.footer')
-
         <!-- .site-wrap -->
-
         @include('layouts.scriptingLinks')
-
-
 </body>
-
-
 <script>
             $(document).ready(function() {
         $('.team-box').click(function() {
             // Get the parent row
             var row = $(this).closest('.row');
-
             // Remove the 'selected' class from all team boxes within the same row
             row.find('.team-box').removeClass('selected');
-
             // Toggle the 'selected' class for the clicked team box
             $(this).toggleClass('selected');
         });
     });
         </script>
-
-
 <script>
     $(document).ready(function() {
     $('#team-selection-form').submit(function(event) {
@@ -518,10 +472,6 @@
 });
 
 </script>
-
-
-
-
 <script>
     $(document).ready(function() {
         $('.team-box').click(function() {
@@ -535,18 +485,13 @@
                 });
                 return;
             }
-
             // Get the parent row
             var row = $(this).closest('.row');
-
             // Remove the 'selected' class from all team boxes within the same row
             row.find('.team-box').removeClass('selected');
-
             // Toggle the 'selected' class for the clicked team box
             $(this).toggleClass('selected');
         });
     });
 </script>
-
-
 </html>

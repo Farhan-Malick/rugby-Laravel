@@ -70,9 +70,9 @@ class PickController extends Controller
 
         // Check for existing picks with the same team name
         $existingPicks = $user->picks()->whereIn('teamname', $teamNames)->get();
-        if (!$existingPicks->isEmpty()) {
-            return response()->json(['error' => 'You cannot pick the same team again.'], Response::HTTP_BAD_REQUEST);
-        }
+    if (!$existingPicks->isEmpty()) {
+        return response()->json(['error' => 'You cannot pick the same team again.'], Response::HTTP_BAD_REQUEST);
+    }
 
         // Sort the picked teams based on their priority in ascending order
         usort($pickedTeams, function ($a, $b) {
@@ -100,7 +100,6 @@ class PickController extends Controller
             return redirect()->back()->with('error', 'An error occurred while submitting picks.');
         }
     }
-
 
 
 
