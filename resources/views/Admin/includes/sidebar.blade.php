@@ -61,6 +61,19 @@
 					<li><a href="{{URL('/Admin/Pool-Listing')}}">All Pools For Client Site</a></li>
 				</ul>
 			</li>
+
+
+            <li class="has-sub">
+				<a href="javascript:;">
+					<span class="badge pull-right">10</span>
+					<i class="fa fa-hdd"></i>
+					<span>Set-up Team Matches</span>
+				</a>
+				<ul class="sub-menu">
+					<li><a href="{{URL('/Admin/Set-up-Teams')}}">Set-up Teams</a></li>
+				</ul>
+			</li>
+
 			<li class="has-sub">
 				<a href="javascript:;">
 					<span class="badge pull-right">10</span>
