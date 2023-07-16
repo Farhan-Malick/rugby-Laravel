@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pick;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 
 
@@ -70,7 +71,7 @@ class PickController extends Controller
         // Check for existing picks with the same team name
         $existingPicks = $user->picks()->whereIn('teamname', $teamNames)->get();
         if (!$existingPicks->isEmpty()) {
-            return redirect()->back()->with('error', 'You cannot pick the same team again.')->with('user', $user)->withInput();
+            return response()->json(['error' => 'You cannot pick the same team again.'], Response::HTTP_BAD_REQUEST);
         }
 
         // Sort the picked teams based on their priority in ascending order

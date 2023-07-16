@@ -288,7 +288,7 @@
                                         }
                                     </style>
 
-                                        <form action="{{ route('submit-picks') }}" method="post" id="team-selection-form">
+                                    <form action="{{ route('submit-picks') }}" method="post" id="team-selection-form">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box"
@@ -470,59 +470,54 @@
 
 <script>
     $(document).ready(function() {
-        $('#team-selection-form').submit(function(event) {
-            event.preventDefault();
+    $('#team-selection-form').submit(function(event) {
+        event.preventDefault();
 
-            var selectedTeams = [];
-            $('.team-box.selected').each(function(index) {
-                var teamId = $(this).data('team-id');
-                var teamName = $(this).find('h4').text();
+        var selectedTeams = [];
 
-                // Check if the team is already selected
-                if (selectedTeams.some(team => team.id === teamId)) {
-                    // Display an error message using SweetAlert
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'You have already selected the team ' + teamName,
-                        showConfirmButton: false,
-                        timer: 2000
-                    });
-                    return false; // Exit the loop and prevent form submission
-                }
+        $('.team-box.selected').each(function(index) {
+            var teamId = $(this).data('team-id');
+            var teamName = $(this).find('h4').text();
+            selectedTeams.push({ id: teamId, name: teamName, priority: index + 1 });
+        });
 
-                selectedTeams.push({ id: teamId, name: teamName, priority: index + 1 });
-            });
+        $.ajax({
+            url: '{{ route('submit-picks') }}',
+            method: 'POST',
+            data: {
+                teams: selectedTeams,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                // Handle the success response
+                console.log(response);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Picks submitted successfully',
+                    showConfirmButton: false,
+                    timer: 2000
+                }).then(function() {
+                    window.location.href = '{{ URL('/myPicks') }}';
+                });
+            },
+            error: function(xhr) {
+                // Handle the error response
+                console.error(xhr);
 
-            // Send the selected team IDs and names to the server
-            $.ajax({
-                url: '{{ route('submit-picks') }}',
-                method: 'POST',
-                data: {
-                    teams: selectedTeams,
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    // Handle the success response
-                    console.log(response);
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success',
-                        text: 'Picks submitted successfully',
-                        showConfirmButton: false,
-                        timer: 2000
-                    }).then(function() {
-                        window.location.href = '{{ URL('/myPicks') }}';
-                    });
-                },
-                error: function(xhr) {
-                    // Handle the error response
-                    console.error(xhr);
-                    // Optionally, you can show an error message to the user
-                }
-            });
+                var errorMessage = xhr.responseJSON && xhr.responseJSON.error ? xhr.responseJSON.error : 'An error occurred while submitting picks.';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: errorMessage,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
         });
     });
+});
+
 </script>
 
 
