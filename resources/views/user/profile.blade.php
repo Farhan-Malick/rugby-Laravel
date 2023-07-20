@@ -217,7 +217,7 @@
                     @if(!empty($setPools) && count($setPools) > 0)
                     @foreach($setPools as $pool)
                     <div class="col-md-6 mb-5">
-                        <div class="border p-3 team-box" data-team-id="1"
+                        <div class="border p-3 "
                             style="border-radius: 10px; background-color: #f8f9fa;">
                             <div class="row">
                                 <div class="col-md-4">
@@ -250,7 +250,11 @@
                     @endif
                 </div>
             </div>
+
+
             {{-- end section set pools show --}}
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="row gutters-sm">
@@ -267,93 +271,38 @@
 
                                     <form action="{{ route('submit-picks') }}" method="post" id="team-selection-form">
                                         @csrf
-                                        <div class="row">
-                                            <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box"
-                                                data-team-id="1" style="border-radius: 10px">
+                                        <div id="team-selection-form">
+                                            @foreach($scheduledMatches as $match)
                                                 <div class="row">
-                                                    <div class="col-md-4">
-                                                        <img src="{{ asset('assets/images/wales.png') }}" alt=""
-                                                            style="border-radius:10px" height="60px">
+                                                    <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box team-selection" data-team-id="{{ $match->team1_id }}" style="border-radius: 10px">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <img src="{{ asset('assets/images/wales.png') }}" alt="" style="border-radius: 10px" height="60px">
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <h4 class="text-dark">{{ $match->team1_name }}</h4>
+                                                                <p>Sports</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-8">
-                                                        <h4 class="text-dark">Wales</h4>
-                                                        <p>Sports</p>
+                                                    <span class="ml-4">VS</span>
+                                                    <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box team-selection" data-team-id="{{ $match->team2_id }}" style="border-radius: 10px">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <img src="{{ asset('assets/images/ireland.png') }}" alt="" style="border-radius: 10px" height="60px">
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <h4 class="text-dark">{{ $match->team2_name }}</h4>
+                                                                <p>Sports</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <span class="ml-4"> VS </span>
-                                            <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box"
-                                                data-team-id="2" style="border-radius: 10px">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <img src="{{ asset('assets/images/ireland.png') }}" alt=""
-                                                            style="border-radius:10px" height="60px">
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <h4 class="text-dark">Ireland</h4>
-                                                        <p>Sports</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box"
-                                                data-team-id="3" style="border-radius: 10px">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <img src="{{ asset('assets/images/itly.avif') }}" alt=""
-                                                            style="border-radius:10px" height="60px">
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <h4 class="text-dark">Italy</h4>
-                                                        <p>Sports</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="ml-4"> VS </span>
-                                            <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box"
-                                                data-team-id="4" style="border-radius: 10px">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <img src="{{ asset('assets/images/france.png') }}" alt=""
-                                                            style="border-radius:10px" height="60px">
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <h4 class="text-dark">France</h4>
-                                                        <p>Sports</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box"
-                                                data-team-id="5" style="border-radius: 10px">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <img src="{{ asset('assets/images/england.jpg') }}" alt=""
-                                                            style="border-radius:10px" height="60px">
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <h4 class="text-dark">England</h4>
-                                                        <p>Sports</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="ml-4"> VS </span>
-                                            <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box"
-                                                data-team-id="6" style="border-radius: 10px">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <img src="{{ asset('assets/images/scotland.png') }}" alt=""
-                                                            style="border-radius:10px" height="60px">
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <h4 class="text-dark">Scotland</h4>
-                                                        <p>Sports</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
+
+                                    
                                         <!-- Add similar code for the remaining teams -->
                                         <div class="text-center">
                                             <button class="btn btn-secondary select-team w-50 ">Submit</button>
@@ -409,6 +358,8 @@
         <!-- .site-wrap -->
         @include('layouts.scriptingLinks')
 </body>
+
+<!-- old js code for team selection -->
 <script>
             $(document).ready(function() {
         $('.team-box').click(function() {
@@ -421,25 +372,57 @@
         });
     });
         </script>
+
+
+<!-- Include the required JavaScript libraries (jQuery and SweetAlert) -->
+<!-- ... -->
+
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
+    // Handle team box click
+    $('.team-box').click(function() {
+        // Get the parent row
+        var row = $(this).closest('.row');
+        // Remove the 'selected' class from all team boxes within the same row
+        row.find('.team-box').removeClass('selected');
+        // Toggle the 'selected' class for the clicked team box
+        $(this).toggleClass('selected');
+    });
+
+    // Handle form submission
     $('#team-selection-form').submit(function(event) {
         event.preventDefault();
 
         var selectedTeams = [];
+        var totalSelected = 0;
 
+        // Collect selected teams data
         $('.team-box.selected').each(function(index) {
             var teamId = $(this).data('team-id');
             var teamName = $(this).find('h4').text();
             selectedTeams.push({ id: teamId, name: teamName, priority: index + 1 });
+            totalSelected++;
         });
 
+        // Check the total number of selected teams
+        if (totalSelected !== 3) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'You must select exactly three teams.',
+                showConfirmButton: false,
+                timer: 2000
+            });
+            return;
+        }
+
+        // AJAX request
         $.ajax({
-            url: '{{ route('submit-picks') }}',
+            url: '/submit-picks', // Adjust the URL based on your server route
             method: 'POST',
             data: {
                 teams: selectedTeams,
-                _token: '{{ csrf_token() }}'
+                _token: '{{ csrf_token() }}' // Make sure the CSRF token is present in the form
             },
             success: function(response) {
                 // Handle the success response
@@ -451,7 +434,7 @@
                     showConfirmButton: false,
                     timer: 2000
                 }).then(function() {
-                    window.location.href = '{{ URL('/myPicks') }}';
+                    window.location.href = '/myPicks'; // Redirect to the appropriate page
                 });
             },
             error: function(xhr) {
@@ -470,8 +453,15 @@
         });
     });
 });
-
 </script>
+
+
+
+
+<!-- new team selection code -->
+
+
+<!-- end of new team selection code -->
 <script>
     $(document).ready(function() {
         $('.team-box').click(function() {

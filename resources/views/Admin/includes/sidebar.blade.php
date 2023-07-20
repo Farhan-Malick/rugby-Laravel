@@ -48,6 +48,8 @@
                 <ul class="sub-menu">
                     <li><a href="{{URL('/Admin/Teams')}}">All Teams</a></li>
                     <li><a href="{{URL('/Admin/add-Teams')}}">Add Teams</a></li>
+                    <li><a href="{{route('create_match')}}">Create Match</a></li>
+                    <li><a href="{{route('scheduled')}}">Scheduled Matches</a></li>
                     {{-- <li><a href="email_detail.html">Detail</a></li> --}}
                 </ul>
             </li>

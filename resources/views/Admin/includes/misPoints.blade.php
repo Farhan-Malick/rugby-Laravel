@@ -37,7 +37,7 @@
 							<div class="stats-title">Total Number Of Tickets Sold</div>
 							<div class="stats-number">38,900</div>
 							{{-- <div class="stats-number">{{$total_no_sold_tickets}}</div> --}}
-							
+
 							<div class="stats-progress progress">
 								<div class="progress-bar" style="width: 76.3%;"></div>
 							</div>

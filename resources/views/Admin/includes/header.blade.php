@@ -1,7 +1,7 @@
 {{-- @php
 	$headerClass = (!empty($headerInverse)) ? 'navbar-inverse ' : 'navbar-default ';
 	$headerMenu = (!empty($headerMenu)) ? $headerMenu : '';
-	$headerMegaMenu = (!empty($headerMegaMenu)) ? $headerMegaMenu : ''; 
+	$headerMegaMenu = (!empty($headerMegaMenu)) ? $headerMegaMenu : '';
 	$headerTopMenu = (!empty($headerTopMenu)) ? $headerTopMenu : '';
 @endphp --}}
 <!-- begin #header -->
@@ -14,7 +14,7 @@
 			<span class="icon-bar"></span>
 		</button>
 		<a href="{{URL('/Admin-Panel')}}" class="navbar-brand">
-			<b class="mr-1">Rugby Portal</b> 
+			<b class="mr-1">Rugby Portal</b>
 		</a>
 		<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 			<span class="icon-bar"></span>
@@ -51,7 +51,7 @@
 		</li>
 		@if (Session::get('email'))
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			<img src="{{asset("AdminAssets/img/user/user-13.jpg")}}" alt="" /> 
+			<img src="{{asset("AdminAssets/img/user/user-13.jpg")}}" alt="" />
 			<span class="d-none d-md-inline">Welcome | {{ Session::get('email') }}</span> <b class="caret"></b>
 		</a>
 		<div class="dropdown-menu dropdown-menu-right">

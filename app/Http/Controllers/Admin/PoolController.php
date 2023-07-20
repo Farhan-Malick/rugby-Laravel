@@ -11,6 +11,7 @@ use App\Models\SetPool;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use App\Models\CreateMatch;
 
 
 class PoolController extends Controller
@@ -47,7 +48,13 @@ class PoolController extends Controller
     {
         $user = auth()->user();
         $setPools = $user->setPools;
-        return view('user.profile', compact('setPools','user'));
+
+        $scheduledMatches = CreateMatch::select('create_matches.*', 'team1.tname as team1_name', 'team2.tname as team2_name')
+            ->join('teams as team1', 'team1.id', '=', 'create_matches.team1_id')
+            ->join('teams as team2', 'team2.id', '=', 'create_matches.team2_id')
+            ->get();
+
+        return view('user.profile', compact('setPools', 'user', 'scheduledMatches'));
     }
 
     public function Client_Pool_Show (){

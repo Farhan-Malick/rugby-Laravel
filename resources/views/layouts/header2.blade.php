@@ -29,6 +29,9 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
+                        @if(auth()->user()->account_type === 'admin')
+                            <a href="{{ URL('/Admin-Rugby-Portal') }}" class="nav-link">Dashboard</a>
+                        @endif
                         <a href="{{URL('/profile')}}" class="nav-link">Profile</a>
                         <a href="{{URL('/myPicks')}}" class="nav-link">My Picks</a>
                     </div>

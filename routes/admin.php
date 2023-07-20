@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\PoolController;
 use App\Http\Middleware\AdminAuth;
+use App\Http\Controllers\Admin\MatchController;
+
+
 
 
 /*
@@ -41,6 +44,21 @@ Route::group(['middleware'=> 'adminauth'], function(){
     Route::get('Admin/score_chart_form/{id}',[PicksController::class,'ScoreChartForm'])->name('score_chart_form');
 
     Route::post('Admin/save_score_chart/{id}',[PicksController::class,'updateScoreChart'])->name('save_score_chart');
+
+
+
+
+    // matches route
+
+    // Route::get('/matches', [MatchController::class, 'index']);
+Route::get('/matches/create', [MatchController::class, 'create'])->name('create_match');
+Route::post('/matches', [MatchController::class, 'store']);
+Route::get('/All-Schedule-Matches', [MatchController::class, 'scheduledMatches'])->name('scheduled');
+// Route::get('/matches/{id}/edit', [MatchController::class, 'edit']);
+// Route::put('/matches/{id}', [MatchController::class, 'update']);
+Route::delete('/matches/{id}', [MatchController::class, 'destroy'])->name('matches.destroy');
+
+
 
 });
 });
