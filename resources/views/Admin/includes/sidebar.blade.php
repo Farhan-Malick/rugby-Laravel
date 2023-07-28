@@ -48,8 +48,7 @@
                 <ul class="sub-menu">
                     <li><a href="{{URL('/Admin/Teams')}}">All Teams</a></li>
                     <li><a href="{{URL('/Admin/add-Teams')}}">Add Teams</a></li>
-                    <li><a href="{{route('create_match')}}">Create Match</a></li>
-                    <li><a href="{{route('scheduled')}}">Scheduled Matches</a></li>
+                   
                     {{-- <li><a href="email_detail.html">Detail</a></li> --}}
                 </ul>
             </li>
@@ -73,7 +72,9 @@
 					<span>Set-up Team Matches</span>
 				</a>
 				<ul class="sub-menu">
-					<li><a href="{{URL('/Admin/Set-up-Teams')}}">Set-up Teams</a></li>
+					{{-- <li><a href="{{URL('/Admin/Set-up-Teams')}}">Set-up Teams</a></li> --}}
+                    <li><a href="{{route('create_match')}}">Create Match</a></li>
+                    <li><a href="{{route('scheduled')}}">Scheduled Matches</a></li>
 				</ul>
 			</li>
 
@@ -253,6 +254,19 @@
                 </a>
                 <ul class="sub-menu">
                     <li><a href="{{route('users_picks')}}">All Users Picks</a></li>
+                    <!-- <li><a href="email_detail.html">Detail</a></li> -->
+                </ul>
+            </li>
+
+
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <!-- <span class="badge pull-right">10</span> -->
+                    <i class="fa fa-hdd"></i>
+                    <span>Users Joined Pools</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="{{route('users_joined_pools_index')}}">Joined Pools</a></li>
                     <!-- <li><a href="email_detail.html">Detail</a></li> -->
                 </ul>
             </li>

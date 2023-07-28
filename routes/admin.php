@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\JoinedPoolsController;
 use App\Http\Controllers\Admin\PicksController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\TeamController;
@@ -57,6 +58,9 @@ Route::get('/All-Schedule-Matches', [MatchController::class, 'scheduledMatches']
 // Route::get('/matches/{id}/edit', [MatchController::class, 'edit']);
 // Route::put('/matches/{id}', [MatchController::class, 'update']);
 Route::delete('/matches/{id}', [MatchController::class, 'destroy'])->name('matches.destroy');
+
+
+Route::get('All/users/joined/pools',[JoinedPoolsController::class,'index'])->name('users_joined_pools_index');
 
 
 

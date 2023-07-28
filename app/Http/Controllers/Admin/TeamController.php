@@ -72,6 +72,7 @@ class TeamController extends Controller
     public function setupTeam()
     {
         // $teams = Team::all();
+        
         return view('Admin.pages.CreateTeams.setupTeams');
     }
 

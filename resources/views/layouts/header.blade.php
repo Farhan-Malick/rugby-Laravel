@@ -5,6 +5,40 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
 <!-- Include animate.css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    /* ... Other CSS rules ... */
+
+    /* Media query for mobile devices (up to 767px) */
+    @media (max-width: 767px) {
+        .site-navigation {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            padding: 20px;
+            z-index: 999;
+        }
+
+        .menu-open .site-navigation {
+            display: block;
+        }
+
+        /* Show the menu toggle icon in mobile */
+        .site-menu-toggle {
+            display: block;
+        }
+
+        /* Hide the desktop menu in mobile */
+        .d-lg-block {
+            display: none;
+        }
+    }
+</style>
+
 
 <header class="site-navbar py-4" role="banner">
 
@@ -48,27 +82,36 @@
                         <li><a href="{{URL('/register')}}" class="nav-link">Register</a></li>
                         @endif
                     </ul>
+                 <!-- Add the class "site-menu-toggle" to the menu toggle link -->
+                 
                 </nav>
-
-                <a href="#"
-                    class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white">
+                <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white">
                     <span class="icon-menu h3 text-white"></span>
                 </a>
-            </div>
 
+             <!-- Add the class "menu-toggle" to the menu toggle link -->
+
+            </div>
             <script>
-                $(document).ready(function() {
-                    // Add ease-out animation on hover
-                    $('.site-menu .nav-link').hover(
-                        function() {
-                            $(this).addClass('animate__animated animate__fadeIn');
-                        },
-                        function() {
-                            $(this).removeClass('animate__animated animate__fadeIn');
-                        }
-                    );
-                });
-            </script>
+    $(document).ready(function () {
+        $('.site-menu .nav-link').hover(
+            function () {
+                $(this).addClass('animate__animated animate__fadeIn');
+            },
+            function () {
+                $(this).removeClass('animate__animated animate__fadeIn');
+            }
+        );
+
+        // Handle the click and touchstart events for the menu toggle
+        $('.site-menu-toggle').on('click touchstart', function (event) {
+            event.preventDefault();
+            $('body').toggleClass('menu-open');
+        });
+    });
+</script>
+
+
 
 
         </div>

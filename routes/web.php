@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Auth;
 */
 Route::get('/login', [LoginController::class])->name("login");
 
-Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/matches', function () {
     return view('user/matches');
 });
@@ -46,4 +45,14 @@ Route::post('/submit-picks', [PickController::class, 'submitPicks'])->name('subm
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/',[HomeController::class,'index'])->name('home');
+
+
+// join pool section
+Route::get('All/Pools',[PoolController::class,'allPools'])->name('all_pools')->middleware('auth');
+Route::get('join/Pool/Form/{id}',[PoolController::class,'form'])->name('form')->middleware('auth');
+Route::post('join/Pool/save/{id}',[PoolController::class,'saveJoinPool'])->name('Save_JoinPool')->middleware('auth');
+
+
+
+

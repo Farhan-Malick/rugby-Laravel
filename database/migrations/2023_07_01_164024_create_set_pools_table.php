@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('pool_id')->constrained('pools');
+            $table->string('random_id');
+
             $table->string('pool_name', 256)->nullable();
 			$table->string('pool_format', 256)->nullable();
 			$table->string('pool_spread', 256)->nullable();

@@ -213,6 +213,54 @@
                 </div>
             </div>
             <div>
+
+
+                {{-- start of Joined pools --}}
+                <nav aria-label="breadcrumb" class="main-breadcrumb">
+                    <ol class="breadcrumb">                      
+                        <li style="text-align: center" class="breadcrumb-item active" aria-current="page">Joined Pools</li>
+                    </ol>
+                </nav>
+                <div class="row">
+                    @if(!empty($join_pool) && count($join_pool) > 0)
+                    @foreach($join_pool as $pool)
+                    <div class="col-md-6 mb-5">
+                        <div class="border p-3 "
+                            style="border-radius: 10px; background-color: #f8f9fa;">
+                            <div class="row">
+                               
+                                <div class="col-md-8">
+                                   
+                                    <p class="text-dark"><b>Pool Name: </b>{{ $pool->pool_name }}</p>
+                                    
+                                   
+                                    <span class="text-muted"><b>ID: </b>{{ $pool->created_pool_id }}</span>
+                                        <small class="text-black" style="margin-left: 100px">{{ $pool->created_at->diffForHumans() }}</small>
+                                                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    @else
+                    <div class="col-12 text-center mt-5">
+                        <h3>No Pool is Set</h3>
+                        <p class="text-white">Start Joining your pools now!</p>
+                        <a href="{{ url('All/Pools') }}" class="btn btn-primary mb-5">Join Pool</a>
+                    </div>
+                    @endif
+                </div>
+
+
+                {{-- end of joined Pools --}}
+
+
+                <nav aria-label="breadcrumb" class="main-breadcrumb">
+                    <ol class="breadcrumb">
+                       
+                        <li class="breadcrumb-item active" aria-current="page">Created Pools</li>
+                    </ol>
+                </nav>
                 <div class="row">
                     @if(!empty($setPools) && count($setPools) > 0)
                     @foreach($setPools as $pool)
@@ -227,15 +275,18 @@
                                         $pool->user->last_name }}</span>
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="text-right mb-2">
+                                    <div class="text-right">
                                         <span class="badge badge-dark">{{ $pool->pool_week }}</span>
                                     </div>
-                                    <h4 class="text-dark">{{ $pool->pool_name }}</h4>
+                                    <p class="text-dark">{{ $pool->pool_name }}</p>
                                     <p>{{ $pool->pool_format }}</p>
                                     <p>{{ $pool->pool_spread }}</p>
-                                    <div class="text-right">
-                                        <small class="text-muted">{{ $pool->created_at->diffForHumans() }}</small>
-                                    </div>
+                                   
+                                    <span class="text-muted"><b>ID: </b>{{ $pool->random_id }}</span>
+                                        <small class="text-black" style="margin-left: 100px">{{ $pool->created_at->diffForHumans() }}</small>
+                                    
+                                    
+                                    
                                 </div>
                             </div>
                         </div>
@@ -315,44 +366,7 @@
                 </div>
             </div>
         </div>
-        <!-- Add the following script at the bottom of your HTML file -->
-        //     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- old script for picks -->
-    //     <script>
-    //         $(document).ready(function() {
-    // $('#team-selection-form').submit(function(event) {
-    //     event.preventDefault();
-    //     var selectedTeams = [];
-    //     $('.team-box.selected').each(function(index) {
-    //         var teamId = $(this).data('team-id');
-    //         var teamName = $(this).find('h4').text();
-    //         selectedTeams.push({ id: teamId, name: teamName, priority: index + 1 });
-    //     });
-    //         // Send the selected team IDs and names to the server
-    //         $.ajax({
-    //             url: '{{ route('submit-picks') }}',
-    //             method: 'POST',
-    //             data: {
-    //                 teams: selectedTeams,
-    //                 _token: '{{ csrf_token() }}'
-    //             },
-    //             success: function(response) {
-    //                 // Handle the success response
-    //                 console.log(response);
-    //                 // Redirect the user to a specific URL
-    //                 window.location.href = '{{ URL('/myPicks') }}';
-    //             },
-    //             error: function(xhr) {
-    //                 // Handle the error response
-    //                 console.error(xhr);
-    //                 // Optionally, you can show an error message to the user
-    //             }
-    //         });
-    //     });
-    // });
-    //     </script>
+
     <!-- end old script -->
         @include('layouts.footer')
         <!-- .site-wrap -->

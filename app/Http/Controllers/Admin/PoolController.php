@@ -12,6 +12,8 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CreateMatch;
+use App\Models\JoinPool;
+use Illuminate\Support\Facades\DB;
 
 
 class PoolController extends Controller
@@ -48,13 +50,14 @@ class PoolController extends Controller
     {
         $user = auth()->user();
         $setPools = $user->setPools;
+        $join_pool= $user->joinPools;
 
         $scheduledMatches = CreateMatch::select('create_matches.*', 'team1.tname as team1_name', 'team2.tname as team2_name')
             ->join('teams as team1', 'team1.id', '=', 'create_matches.team1_id')
             ->join('teams as team2', 'team2.id', '=', 'create_matches.team2_id')
             ->get();
 
-        return view('user.profile', compact('setPools', 'user', 'scheduledMatches'));
+        return view('user.profile', compact('setPools', 'user', 'scheduledMatches','join_pool'));
     }
 
     public function Client_Pool_Show (){
@@ -72,10 +75,15 @@ class PoolController extends Controller
         $setPool->pool_format = $request->input('pool_format');
         $setPool->pool_spread = $request->input('pool_spread');
         $setPool->pool_week = $request->input('pool_week');
+        
+        // Generate a random ID
+        $setPool->random_id = uniqid();
+    
         $setPool->save();
-
-        return redirect()->route('profile')->with('success','Pool has been set');
+    
+        return redirect()->route('profile')->with('success', 'Pool has been set');
     }
+    
 
 
 
@@ -87,6 +95,69 @@ class PoolController extends Controller
         return view('Admin.allpicks.all_user_picks', compact('users'));
     }
 
+
+    // Join POOL section
+
+
+    public function allPools()
+    {
+        $setPools = SetPool::all();
+
+        return view('user.allPools',compact('setPools'));
+
+
+    }
+
+    public function form($id)
+    {
+       
+
+        $random_id = SetPool::find($id);
+        
+        
+
+        if (is_null($id)) {
+            //not found
+            return redirect()->back();
+        } else {
+            //found
+            return view('user.joinPoolForn',compact('random_id'));
+        }
+      
+       
+    }
+
+    public function saveJoinPool(Request $request)
+    {
+        $created_pool_id = $request->input('created_pool_id');
+    
+        // Check if the created_pool_id exists in the set_pools table
+        $existsInSetPools = DB::table('set_pools')->where('random_id', $created_pool_id)->exists();
+    
+        if (!$existsInSetPools) {
+            // Return a JSON response with an error message if the created_pool_id doesn't exist
+            return response()->json(['error' => 'Pool ID does not exist']);
+        }
+
+        $user = User::all();
+
+            // Save the form if the created_pool_id exists
+            $join_pool = new JoinPool();
+            $join_pool->user_id = auth()->id();
+            $join_pool->user_name = $user->first()->first_name; // Corrected line
+
+            $join_pool->created_pool_id = $created_pool_id;
+            $join_pool->pool_name = $request->input('pool_name');
+            $join_pool->save();
+
+       
+    
+        // Return a JSON response indicating success
+        return response()->json(['success' => true]);
+    }
+    
+    
+    
 
 
 }

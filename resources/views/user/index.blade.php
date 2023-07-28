@@ -29,9 +29,12 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae pariatur.</p>
             <div id="date-countdown"></div>
             <p>
-              <a href="{{URL('/create-pool')}}" class="btn btn-primary py-3 px-4 mr-3">Start new pool</a>
-              <a href="#" class="more light">Learn More</a>
+              <a href="{{URL('/create-pool')}}" class="btn btn-primary py-3 px-4 mr-3">Start New Pool</a>
+              <a href="{{URL('All/Pools')}}" class="btn btn-primary py-3 px-4 mr-3">Join A Pool</a>
+
+              {{-- <a href="#" class="more light">Learn More</a> --}}
             </p>
+            
           </div>
         </div>
       </div>

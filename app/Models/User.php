@@ -54,6 +54,11 @@ class User extends Authenticatable
     return $this->hasMany(SetPool::class);
 }
 
+public function joinPools()
+{
+    return $this->hasMany(JoinPool::class);
+}
+
 public function picks()
 {
     return $this->hasMany(Pick::class);
