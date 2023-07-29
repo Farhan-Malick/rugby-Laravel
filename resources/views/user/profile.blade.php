@@ -85,8 +85,8 @@
                                         <h4 class="text-dark">{{ Auth::user()->first_name }} {{ Auth::user()->last_name
                                             }}</h4>
                                         <p class="text-dark mb-1">{{ Auth::user()->country }}</p>
-                                        <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                                        <button class="btn btn-primary">Follow</button>
+                                        <p class="text-muted font-size-sm">{{Auth::user()->email}}</p>
+                                        {{-- <button class="btn btn-primary">Follow</button> --}}
                                         <button class="btn btn-outline-primary">Message</button>
                                     </div>
                                 </div>
@@ -201,12 +201,12 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="col-sm-12">
                                         <a class="btn btn-info " target="__blank"
                                             href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -328,7 +328,7 @@
                                                     <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box team-selection" data-team-id="{{ $match->team1_id }}" style="border-radius: 10px">
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                <img src="{{ asset('assets/images/wales.png') }}" alt="" style="border-radius: 10px" height="60px">
+                                                                <img id="teamImage" src="{{ asset('uploads/Teams/thumbnail/' . $match->team1_image) }}" alt="image" style="border-radius: 10px" height="60px">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <h4 class="text-dark">{{ $match->team1_name }}</h4>
@@ -340,7 +340,7 @@
                                                     <div class="col-md-5 ml-5 mr-2 border 1px p-3 mb-5 team-box team-selection" data-team-id="{{ $match->team2_id }}" style="border-radius: 10px">
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                <img src="{{ asset('assets/images/ireland.png') }}" alt="" style="border-radius: 10px" height="60px">
+                                                                <img src="{{ asset('uploads/Teams/thumbnail/' . $match->team2_image) }}" alt="" style="border-radius: 10px" height="60px">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <h4 class="text-dark">{{ $match->team2_name }}</h4>

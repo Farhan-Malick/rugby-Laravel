@@ -15,13 +15,13 @@
                     </div>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <ul class="nav nav-profile">
                     <li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
                     <li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
                     <li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
         <!-- end sidebar user -->
         <!-- begin sidebar nav -->
@@ -34,14 +34,14 @@
                     <span>Dashboard</span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="active"><a href="{{URL('/admin')}}">Dashboard v1</a></li>
+                    <li class="active"><a href="{{route('admin_dashboard')}}">Dashboard</a></li>
                     {{-- <li><a href="index_v2.html">Dashboard v2</a></li>
                     <li><a href="index_v3.html">Dashboard v3</a></li> --}}
                 </ul>
             </li>
             <li class="has-sub">
                 <a href="javascript:;">
-                    <span class="badge pull-right">10</span>
+                    
                     <i class="fa fa-hdd"></i>
                     <span>Create Team</span>
                 </a>
@@ -54,7 +54,7 @@
             </li>
             <li class="has-sub">
                 <a href="javascript:;">
-                    <span class="badge pull-right">10</span>
+                    
                     <i class="fa fa-hdd"></i>
                     <span>Create Pool</span>
                 </a>
@@ -67,7 +67,7 @@
 
             <li class="has-sub">
 				<a href="javascript:;">
-					<span class="badge pull-right">10</span>
+					
 					<i class="fa fa-hdd"></i>
 					<span>Set-up Team Matches</span>
 				</a>
@@ -78,9 +78,9 @@
 				</ul>
 			</li>
 
-			<li class="has-sub">
+			{{-- <li class="has-sub">
 				<a href="javascript:;">
-					<span class="badge pull-right">10</span>
+					
 					<i class="fa fa-hdd"></i>
 					<span>Email</span>
 				</a>
@@ -89,7 +89,7 @@
 					<li><a href="email_compose.html">Compose</a></li>
 					<li><a href="email_detail.html">Detail</a></li>
 				</ul>
-			</li>
+			</li> --}}
 			{{-- <li>
 				<a href="widget.html">
 					<i class="fab fa-simplybuilt"></i>
@@ -248,7 +248,7 @@
 
             <li class="has-sub">
                 <a href="javascript:;">
-                    <!-- <span class="badge pull-right">10</span> -->
+                    <!--  -->
                     <i class="fa fa-hdd"></i>
                     <span>Users Picks</span>
                 </a>
@@ -261,7 +261,7 @@
 
             <li class="has-sub">
                 <a href="javascript:;">
-                    <!-- <span class="badge pull-right">10</span> -->
+                    <!--  -->
                     <i class="fa fa-hdd"></i>
                     <span>Users Joined Pools</span>
                 </a>

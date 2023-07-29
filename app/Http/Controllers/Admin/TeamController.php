@@ -3,14 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Pool;
 use Illuminate\Http\Request;
 use App\Models\Admin\Team;
-
+use App\Models\JoinPool;
+use App\Models\SetPool;
+use App\Models\User;
 
 class TeamController extends Controller
 {
     public function dashboard(){
-        return view('Admin/pages/dashboard');
+        $users = User::all();
+        $created_pools = SetPool::all();
+        $pools = Pool::all();
+        $joined_pools = JoinPool::all();
+        return view('Admin/pages/dashboard',compact('users','created_pools','pools','joined_pools'));
     }
     public function index()
     {

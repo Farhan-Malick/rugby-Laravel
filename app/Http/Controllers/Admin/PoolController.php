@@ -52,10 +52,11 @@ class PoolController extends Controller
         $setPools = $user->setPools;
         $join_pool= $user->joinPools;
 
-        $scheduledMatches = CreateMatch::select('create_matches.*', 'team1.tname as team1_name', 'team2.tname as team2_name')
-            ->join('teams as team1', 'team1.id', '=', 'create_matches.team1_id')
-            ->join('teams as team2', 'team2.id', '=', 'create_matches.team2_id')
-            ->get();
+        $scheduledMatches = CreateMatch::select('create_matches.*', 'team1.tname as team1_name', 'team1.thumbnail as team1_image', 'team2.tname as team2_name', 'team2.thumbnail as team2_image')
+        ->join('teams as team1', 'team1.id', '=', 'create_matches.team1_id')
+        ->join('teams as team2', 'team2.id', '=', 'create_matches.team2_id')
+        ->get();
+
 
         return view('user.profile', compact('setPools', 'user', 'scheduledMatches','join_pool'));
     }

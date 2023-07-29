@@ -41,7 +41,7 @@
 		<div id="content" class="content">
 			<!-- begin breadcrumb -->
 			<ol class="breadcrumb float-xl-right">
-				<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+				<li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
 				<li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
 				<li class="breadcrumb-item active">Dashboard v2</li>
 			</ol>
@@ -56,7 +56,7 @@
 
 				<!-- end row -->
 			<!-- begin row -->
-			<div class="row">
+			{{-- <div class="row">
 				<!-- begin col-8 -->
 				<div class="col-xl-8">
 					<div class="widget-chart with-sidebar inverse-mode">
@@ -109,7 +109,7 @@
 					</div>
 				</div>
 				<!-- end col-4 -->
-			</div>
+			</div> --}}
 			<!-- end row -->
 			<!-- begin row -->
 			{{-- <div class="row">

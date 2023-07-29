@@ -28,7 +28,7 @@ Route::group(['middleware' => 'web'], function () {
 Route::group(['middleware'=> 'adminauth'], function(){
 
     // Teams Section
-    Route::get('/Admin-Rugby-Portal', [TeamController::class, 'dashboard']);
+    Route::get('/Admin-Rugby-Portal', [TeamController::class, 'dashboard'])->name('admin_dashboard');
     Route::get('/Admin/Teams', [TeamController::class, 'allTeams']);
     Route::get('/Admin/add-Teams', [TeamController::class, 'index']);
     Route::post('/Admin/add-team', [TeamController::class, 'store']);

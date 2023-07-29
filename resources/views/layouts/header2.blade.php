@@ -1,3 +1,6 @@
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <h2><a href="{{ URL('/') }}" class="nav-link text-white">RUGBY</a></h2>
@@ -39,9 +42,9 @@
                 @else
                 <li><a href="{{URL('/login')}}" class="nav-link text-white">Login</a></li>
                 <li><a href="{{URL('/register')}}" class="nav-link text-white">Register</a></li>
-
                 @endif
             </ul>
         </div>
     </div>
 </nav>
+

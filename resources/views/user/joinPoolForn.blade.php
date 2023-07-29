@@ -35,34 +35,32 @@
 
     
     <h1 class="text-black" style="text-align:center; margin-top:50px">Fill Form To Join Pool</h1>
-    <div class="text-right" style="margin-left: 400px">
-        <div class="site-section">
+    <div class="text-right">
+      <div class="site-section">
         <div class="container">
-          <div class="row">
+          <div class="row justify-content-center">
             <div class="col-lg-6">
               <form id="joinPoolForm" action="{{ route('Save_JoinPool', ['id' => $random_id->id]) }}" method="post">
-
-                    @csrf
-                    
-
-                    <div class="form-group">
-                        <input type="text" class="form-control text-black" placeholder="ID" name="created_pool_id" required>
-                    </div>
-                    @error('created_pool_id')
+                @csrf
+                <div class="form-group">
+                  <input type="text" class="form-control text-black" placeholder="ID" name="created_pool_id" required>
+                  @error('created_pool_id')
                     <div class="alert alert-danger">{{$message}}</div>
-                      
-                    @enderror
-                    <div class="form-group">
-                        <input type="text" class="form-control text-black" placeholder="Write Name Of Pool" name="pool_name" required>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-secondary select-team w-50">Submit</button>
-                    </div>
-                </form>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control text-black" placeholder="Write Name Of Pool" name="pool_name" required>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-secondary select-team w-100">Submit</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    
  </div>
 
 

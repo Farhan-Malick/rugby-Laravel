@@ -1,11 +1,7 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Include Bootstrap JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+<!-- Include Bootstrap JavaScript -->
+
 <!-- Include animate.css -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
     /* ... Other CSS rules ... */
 

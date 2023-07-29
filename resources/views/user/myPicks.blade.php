@@ -26,7 +26,7 @@
         Stats of your PICKS
     </h1>
     <p class="text-center">All the picks that you have made</p>
-        <div class="row m-5">
+        <div class="row">
             <div class="col-lg-12">
 
                 <div class="widget-next-match">
