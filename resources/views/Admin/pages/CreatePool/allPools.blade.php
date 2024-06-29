@@ -115,6 +115,7 @@
                                     <th scope="col">Category</th>
                                     <th scope="col">status</th>
                                     <th scope="col">Image</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -124,13 +125,19 @@
                                     <td>{{$pool->poolname}}</td>
                                     <td>{{$pool->pool_category}}</td>
                                     <td>
-                                        <img src="{{ asset('uploads/PoolFromAdmin/' . $pool->poolimage) }}"
-                                            class="img-rounded height-30 width-30" />
+                                        <img src="{{ asset('uploads/PoolFromAdmin/' . $pool->poolimage) }}" class="img-rounded height-30 width-30" />
                                     </td>
                                     <td>{{$pool->status}}</td>
-
+                                    <td>
+                                        <form action="{{ route('pool.destroy', $pool->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
+                                
 
                             </tbody>
                         </table>

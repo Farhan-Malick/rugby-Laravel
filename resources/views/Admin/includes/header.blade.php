@@ -1,9 +1,4 @@
-{{-- @php
-	$headerClass = (!empty($headerInverse)) ? 'navbar-inverse ' : 'navbar-default ';
-	$headerMenu = (!empty($headerMenu)) ? $headerMenu : '';
-	$headerMegaMenu = (!empty($headerMegaMenu)) ? $headerMegaMenu : '';
-	$headerTopMenu = (!empty($headerTopMenu)) ? $headerTopMenu : '';
-@endphp --}}
+
 <!-- begin #header -->
 <div id="header" class="header navbar-default">
 	<!-- begin navbar-header -->

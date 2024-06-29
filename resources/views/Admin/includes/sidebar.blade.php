@@ -78,6 +78,27 @@
 				</ul>
 			</li>
 
+            <li class="has-sub">
+				<a href="javascript:;">
+					
+					<i class="fa fa-hdd"></i>
+					<span>Accouncements</span>
+				</a>
+				<ul class="sub-menu">
+					{{-- <li><a href="{{URL('/Admin/Set-up-Teams')}}">Set-up Teams</a></li> --}}
+                    <li><a href="{{route('announceTeam')}}">Announce Team</a></li>
+				</ul>
+			</li>
+            {{-- <li class="has-sub">
+				<a href="javascript:;">
+					
+					<i class="fa fa-hdd"></i>
+					<span>Set Spreads</span>
+				</a>
+				<ul class="sub-menu">
+                    <li><a href="{{route('SetBonusPoints')}}">Manage Bonus Points</a></li>
+				</ul>
+			</li> --}}
 			{{-- <li class="has-sub">
 				<a href="javascript:;">
 					

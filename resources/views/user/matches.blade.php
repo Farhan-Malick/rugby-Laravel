@@ -39,7 +39,7 @@
     <div class="container">
       
 
-      <div class="row">
+      {{-- <div class="row">
         <div class="col-lg-12">
           
           <div class="d-flex team-vs">
@@ -70,188 +70,58 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
   
 
     
     <div class="site-section bg-dark">
       <div class="container">
-        
-        <div class="row mb-5">
-          <div class="col-lg-12">
-            <div class="widget-next-match">
-              <div class="widget-title">
-                <h3>Next Match</h3>
-              </div>
-              <div class="widget-body mb-3">
-                <div class="widget-vs">
-                  <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
-                    <div class="team-1 text-center">
-                      <img src="{{asset('assets/images/logo_4.png')}}" alt="Image">
-                      <h3>Sk Games</h3>
-                    </div>
-                    <div>
-                      <span class="vs"><span>VS</span></span>
-                    </div>
-                    <div class="team-2 text-center">
-                      <img src="{{asset('assets/images/logo_4.png')}}" alt="Image">
-                      <h3>Dark Angels</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="text-center widget-vs-contents mb-4">
-                <h4>World Cup League</h4>
-                <p class="mb-5">
-                  <span class="d-block">December 20th, 2020</span>
-                  <span class="d-block">9:30 AM GMT+0</span>
-                  <strong class="text-primary">New Euro Arena</strong>
-                </p>
-
-                <div id="date-countdown2" class="pb-1"></div>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div class="row">
-          <div class="col-12 title-section">
-            <h2 class="heading">Upcoming Match</h2>
-          </div>
-          <div class="col-lg-6 mb-4">
-            <div class="bg-light p-4 rounded">
-              <div class="widget-body">
-                  <div class="widget-vs">
-                    <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
-                      <div class="team-1 text-center">
-                        <img src="{{asset('assets/images/logo_4.png')}}" alt="Image">
-                        <h3>Sk Games</h3>
-                      </div>
-                      <div>
-                        <span class="vs"><span>VS</span></span>
-                      </div>
-                      <div class="team-2 text-center">
-                        <img src="{{asset('assets/images/logo_4.png')}}" alt="Image">
-                        <h3>Dark Angels</h3>
+          @foreach($groupedMatches as $round => $matches)
+            <div class="col-12">
+              <div class="title-section">
+                <h2 class="heading"><b>Round {{ $round }}</b></h2>
+              </div>
+            </div>
+            @foreach($matches as $match)
+              <div class="col-lg-12 mb-4">
+                <div class="bg-light p-4 rounded">
+                  <div class="widget-body">
+                    <div class="widget-vs">
+                      <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                        <div class="team-1 text-center">
+                          <img id="teamImage" src="{{ asset('uploads/Teams/thumbnail/' . $match->team1_image) }}" alt="image" style="border-radius: 10px" height="130px">
+                          <br><br>
+                          <h3>{{ $match->team1_name }}</h3>
+                        </div>
+                        <div>
+                          <span class="vs"><span>VS</span></span>
+                        </div>
+                        <div class="team-2 text-center">
+                          <img id="teamImage" src="{{ asset('uploads/Teams/thumbnail/' . $match->team2_image) }}" alt="image" style="border-radius: 10px" height="130px">
+                          <br><br>
+                          <h3>{{ $match->team2_name }}</h3>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div class="text-center widget-vs-contents mb-4">
-                  <h4>World Cup League</h4>
-                  <p class="mb-5">
-                    <span class="d-block">December 20th, 2020</span>
-                    <span class="d-block">9:30 AM GMT+0</span>
-                    <strong class="text-primary">New Euro Arena</strong>
-                  </p>
-
-                </div>
-              
-            </div>
-          </div>
-          <div class="col-lg-6 mb-4">
-            <div class="bg-light p-4 rounded">
-              <div class="widget-body">
-                  <div class="widget-vs">
-                    <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
-                      <div class="team-1 text-center">
-                        <img src="{{asset('assets/images/logo_4.png')}}" alt="Image">
-                        <h3>Sk Games</h3>
-                      </div>
-                      <div>
-                        <span class="vs"><span>VS</span></span>
-                      </div>
-                      <div class="team-2 text-center">
-                        <img src="{{asset('assets/images/logo_4.png')}}" alt="Image">
-                        <h3>Dark Angels</h3>
-                      </div>
-                    </div>
+                  <div class="text-center widget-vs-contents mb-4">
+                    <h4>World Cup League</h4>
+                    <p class="mb-5">
+                      <span class="d-block">{{ Carbon\Carbon::parse($match->date)->format('F jS, Y') }}</span>
+                      {{-- <span class="d-block">9:30 AM GMT+0</span> --}}
+                      <strong class="text-primary">{{ $match->team1_venue }}</strong>
+                    </p>
                   </div>
                 </div>
-
-                <div class="text-center widget-vs-contents mb-4">
-                  <h4>World Cup League</h4>
-                  <p class="mb-5">
-                    <span class="d-block">December 20th, 2020</span>
-                    <span class="d-block">9:30 AM GMT+0</span>
-                    <strong class="text-primary">New Euro Arena</strong>
-                  </p>
-
-                </div>
-              
-            </div>
-          </div>
-
-          <div class="col-lg-6 mb-4">
-            <div class="bg-light p-4 rounded">
-              <div class="widget-body">
-                  <div class="widget-vs">
-                    <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
-                      <div class="team-1 text-center">
-                        <img src="{{asset('assets/images/logo_4.png')}}" alt="Image">
-                        <h3>Sk Games</h3>
-                      </div>
-                      <div>
-                        <span class="vs"><span>VS</span></span>
-                      </div>
-                      <div class="team-2 text-center">
-                        <img src="{{asset('assets/images/logo_4.png')}}" alt="Image">
-                        <h3>Dark Angels</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="text-center widget-vs-contents mb-4">
-                  <h4>World Cup League</h4>
-                  <p class="mb-5">
-                    <span class="d-block">December 20th, 2020</span>
-                    <span class="d-block">9:30 AM GMT+0</span>
-                    <strong class="text-primary">New Euro Arena</strong>
-                  </p>
-
-                </div>
-              
-            </div>
-          </div>
-          <div class="col-lg-6 mb-4">
-            <div class="bg-light p-4 rounded">
-              <div class="widget-body">
-                  <div class="widget-vs">
-                    <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
-                      <div class="team-1 text-center">
-                        <img src="{{asset('assets/images/logo_4.png')}}" alt="Image">
-                        <h3>Sk Games</h3>
-                      </div>
-                      <div>
-                        <span class="vs"><span>VS</span></span>
-                      </div>
-                      <div class="team-2 text-center">
-                        <img src="{{asset('assets/images/logo_4.png')}}" alt="Image">
-                        <h3>Dark Angels</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="text-center widget-vs-contents mb-4">
-                  <h4>World Cup League</h4>
-                  <p class="mb-5">
-                    <span class="d-block">December 20th, 2020</span>
-                    <span class="d-block">9:30 AM GMT+0</span>
-                    <strong class="text-primary">New Euro Arena</strong>
-                  </p>
-
-                </div>
-              
-            </div>
-          </div>
-          
+              </div>
+            @endforeach
+          @endforeach
         </div>
-      </div>
+        
     </div> <!-- .site-section -->
 
 

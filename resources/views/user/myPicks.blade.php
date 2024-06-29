@@ -34,6 +34,7 @@
                     <thead>
                       <tr>
                         <th>#</th>
+                        <th>Rounds</th>
                         <th>Name</th>
                         <th>Team</th>
                         <th>Points</th>
@@ -41,20 +42,23 @@
                     </thead>
                     <tbody>
                       @foreach ($Picks as $pick)
-                      <tr>
-                        <td>{{$pick->id }}</td>
-                        <td>{{$pick->name }}</td>
-                        <td><strong class="text-white">{{$pick->teamname}}</strong></td>
-                        <td>{{$pick->points }}</td>
-                      </tr>
+                          <tr>
+                            <td>{{$pick->id }}</td>
+                            <td>{{$pick->rnd }}</td>
+                            <td>{{$pick->name }}</td>
+                            <td><strong class="text-white">{{$pick->teamname}}</strong></td>
+                            <td>{{$pick->points }}</td>
+                          </tr>
                       @endforeach
                     </tbody>
                   </table>
                 </div>
-
+              
               </div>
         </div>
    </div>
+   <br><br>
+
 @include('layouts.footer')
 
   <!-- .site-wrap -->

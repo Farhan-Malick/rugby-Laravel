@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('set_pools', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('pool_id')->constrained('pools');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('pool_id')->constrained('pools')->onDelete('cascade');
             $table->string('random_id');
 
             $table->string('pool_name', 256)->nullable();
@@ -24,6 +24,8 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
+    
 
     /**
      * Reverse the migrations.

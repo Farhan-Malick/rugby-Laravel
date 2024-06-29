@@ -1,0 +1,84 @@
+[10-Oct-2023 18:19:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php on line 18
+[10-Oct-2023 18:19:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php on line 18
+[10-Oct-2023 18:19:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php on line 18
+[10-Oct-2023 18:19:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/app.php on line 19
+[10-Oct-2023 18:19:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/app.php on line 19
+[10-Oct-2023 18:19:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php on line 18
+[10-Oct-2023 18:19:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php on line 18
+[10-Oct-2023 18:19:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/app.php on line 19
+[10-Oct-2023 18:19:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/app.php on line 19
+[10-Oct-2023 18:19:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/app.php on line 19
+[10-Oct-2023 18:19:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php on line 18
+[10-Oct-2023 18:19:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/broadcasting.php on line 18
+[10-Oct-2023 18:19:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/app.php on line 19
+[10-Oct-2023 18:19:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/app.php on line 19
+[10-Oct-2023 18:19:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php on line 18
+[10-Oct-2023 18:19:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php on line 18
+[10-Oct-2023 18:19:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php on line 18
+[10-Oct-2023 18:19:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php on line 18
+[10-Oct-2023 18:19:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php on line 18
+[10-Oct-2023 18:19:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php on line 18
+[10-Oct-2023 18:19:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/config/cache.php on line 18

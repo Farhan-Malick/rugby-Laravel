@@ -114,9 +114,10 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Round 1</th>
                                     <th scope="col">Round 2</th>
+                                    <th scope="col">Round 3</th>
                                     <th scope="col">Points 6</th>
-                                    <th scope="col">Point 4</th>
-                                    <th scope="col">Point 2</th>
+                                    <th scope="col">Points 4</th>
+                                    <th scope="col">Points 2</th>
                                     <th scope="col">Total</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -126,90 +127,84 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $user->first_name ?? 'Null' }}</td>
+                        
+                                    <!-- Columns for Round 1, Round 2, and Round 3 -->
+                                    @php
+                                        $round1Points = 0;
+                                        $round2Points = 0;
+                                        $round3Points = 0;
+                                    @endphp
+                                    @foreach(['round1', 'round2', 'round3'] as $round)
+                                        <td>
+                                            @php
+                                                $teamname = null;
+                                                $roundPoints = 0;
+                                                foreach($user->picks as $pick) {
+                                                    // printf($pick);
+                                                    if ($pick->$round) {
+                                                        $teamname = $pick->$round;
+                                                        // Assign round points based on the current round
+                                                        $round1Points = $pick->round1;
+                                                        $round2Points = $pick->round2;
+                                                        $round3Points = $pick->round3;
+                                                        // Add to the total round points based on the current round
+                                                        if ($round == 'round1') {
+                                                            $round1Points = $round1Points;
+                                                        } elseif ($round == 'round2') {
+                                                            $round2Points = $round2Points;
+                                                        } elseif ($round == 'round3') {
+                                                            $round3Points = $round3Points;
+                                                        }
+                                                        // printf( $round3Points);
+                                                        break;
+                                                    }
+                                                }
+                                            @endphp
+                                            <p>{{ $teamname ?? 'Null' }}</p>
+                                        </td>
+                                    @endforeach
+                        
+                                    <!-- Columns for Points 6, Point 4, and Point 2 -->
+                                    @foreach([6, 4, 2] as $points)
+                                        @php
+                                            $pickedTeam = $user->picks->where('points', $points)->first()->teamname ?? 'Null';
+                                            $pointsValue = $user->picks->where('points', $points)->first()->points ?? 0;
+                                        @endphp
+                                        <td style="{{ in_array($pickedTeam, $matches->pluck('winnerTeam')->toArray()) ? 'color: black;' : '' }}">
+                                            <p>{{ $pickedTeam }} ({{ $pointsValue }})</p>
+                                        </td>
+                                    @endforeach
+                        
+                                    <!-- Column for Total -->
                                     <td>
                                         @php
-                                            $teamname = null;
-                                            foreach($user->picks as $pick) {
-                                                if($pick->round1) {
-                                                    $teamname = $pick->round1;
-                                                    break;
-                                                }
-                                            }
+                                            $totalPoints = 
+                                                $user->picks->where('points', 6)->sum('points') +
+                                                $user->picks->where('points', 4)->sum('points') +
+                                                $user->picks->where('points', 2)->sum('points') +
+                                                $round1Points +
+                                                $round2Points +
+                                                $round3Points;
                                         @endphp
-                                        <p>{{ $teamname ?? 'Null' }}</p>
+                                        <p>{{ $totalPoints }}</p>
                                     </td>
-                                    <td>
-                                        @php
-                                            $teamname = null;
-                                            foreach($user->picks as $pick) {
-                                                if($pick->round2) {
-                                                    $teamname = $pick->round2;
-                                                    break;
-                                                }
-                                            }
-                                        @endphp
-                                        <p>{{ $teamname ?? 'Null' }}</p>
-                                    </td>
-                                    <td>
-                                        @php
-                                            $teamname = null;
-                                            foreach($user->picks as $pick) {
-                                                if($pick->points == 6) {
-                                                    $teamname = $pick->teamname;
-                                                    break;
-                                                }
-                                            }
-                                        @endphp
-                                        <p>{{ $teamname ?? 'Null' }}</p>
-                                    </td>
-                                    <td>
-                                        @php
-                                            $teamname = null;
-                                            foreach($user->picks as $pick) {
-                                                if($pick->points == 4) {
-                                                    $teamname = $pick->teamname;
-                                                    break;
-                                                }
-                                            }
-                                        @endphp
-                                        <p>{{ $teamname ?? 'Null' }}</p>
-                                    </td>
-                                    <td>
-                                        @php
-                                            $teamname = null;
-                                            foreach($user->picks as $pick) {
-                                                if($pick->points == 2) {
-                                                    $teamname = $pick->teamname;
-                                                    break;
-                                                }
-                                            }
-                                        @endphp
-                                        <p>{{ $teamname ?? 'Null' }}</p>
-                                    </td>
-                                    <td>
-                                        @php
-                                            $teamname = null;
-                                            foreach($user->picks as $pick) {
-                                                if($pick->total) {
-                                                    $teamname = $pick->total;
-                                                    break;
-                                                }
-                                            }
-                                        @endphp
-                                        <p>{{ $teamname ?? 'Null' }}</p>
-                                    </td>
+                        
+                                    <!-- Action Column -->
                                     <td>
                                         <a href="{{ route('score_chart_form', ['id' => $user->id]) }}">
                                             <button class="btn btn-primary">Edit</button>
                                         </a>
                                     </td>
-
-
                                 </tr>
                                 @endforeach
                             </tbody>
-
                         </table>
+                        
+                        
+                        
+                        
+                        
+                        
 
                     </div>
                     <!-- end panel-body -->

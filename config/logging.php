@@ -61,7 +61,9 @@ return [
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
+            'level' => 'debug',
+            'days' => 14,
+            'permission' => 0664, // Ensure proper file permissions
             'replace_placeholders' => true,
         ],
 
@@ -70,6 +72,7 @@ return [
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
+            'permission' => 0664, // Ensure proper file permissions
             'replace_placeholders' => true,
         ],
 

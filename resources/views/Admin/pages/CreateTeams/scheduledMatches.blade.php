@@ -112,37 +112,47 @@
                     <!-- begin panel-body -->
                     <div class="panel-body">
 
-                        <table id="data-table-"
-    class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Team 1</th>
-            <th scope="col"></th>
-            <th scope="col">Team 2</th>
-            <th scope="col">Action</th>
-
-        </tr>
-    </thead>
-    <tbody>
-    @foreach($scheduledMatches as $match)
-    <tr>
-        <td>{{ $match->id }}</td>
-        <td><b>{{ $match->team1_name }}</b></td>
-        <td><b class="text-danger">VS</b></td>
-        <td><b>{{ $match->team2_name }}</b></td>
-        <td>
-    <form action="{{ route('matches.destroy', $match->id) }}" method="post" id="deleteForm_{{ $match->id }}">
-        @csrf
-        @method('DELETE')
-        <button type="button" class="btn btn-danger deleteBtn" data-id="{{ $match->id }}"><i class="fa-sharp fa-solid fa-trash" style="color: #f5f9ff;"></i></button>
-    </form>
-</td>
-    </tr>
-    @endforeach
-</tbody>
-
-</table>
+                        <table id="data-table-" class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Round</th>
+                                    <th scope="col">Team 1</th>
+                                    <th scope="col">Team 1 Bonus</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Team 2</th>
+                                    <th scope="col">Team 2 Bonus</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($scheduledMatches as $match)
+                                    <tr>
+                                        <td>{{ $match->id }}</td>
+                                        <td>{{ $match->rounds }}</td>
+                                        <td><b>{{ $match->team1_name }}</b></td>
+                                        <td>+{{ $match->bonus_points_team1 }}</td>
+                                        <td><b class="text-danger">VS</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><b>{{ $match->team2_name }}</b></td>
+                                        <td>+{{ $match->bonus_points_team2 }}</td>
+                                        <td>
+                                            <form action="{{ route('matches.destroy', $match->id) }}" method="post" id="deleteForm_{{ $match->id }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button" class="btn btn-danger deleteBtn" data-id="{{ $match->id }}">
+                                                    <i class="fa-sharp fa-solid fa-trash" style="color: #f5f9ff;"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        
                     </div>
                     <!-- end panel-body -->
                 </div>

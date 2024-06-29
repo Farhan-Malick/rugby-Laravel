@@ -93,6 +93,7 @@
                     </ul>
                 </div>
             @endif
+
             <!-- end page-header -->
             <!-- begin wizard-form -->
             <form action="{{url('matches')}}" method="POST" enctype="multipart/form-data" class="form-control-with-bg">
@@ -131,6 +132,71 @@
                                                 <div class="form-group">
                                                     <label for="team1">Team 1:</label>
                                                     <select name="team1_id" id="team1" class="form-control team-dropdown">
+                                                        <option value="" disabled selected>Select Team</option>
+                                                        @foreach ($teams as $id => $name)
+                                                            <option value="{{ $id }}">{{ $name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="team2">Team 2:</label>
+                                                    <select name="team2_id" id="team2" class="form-control team-dropdown">
+                                                        <option value="" disabled selected>Select Team</option>
+                                                        @foreach ($teams as $id => $name)
+                                                            <option value="{{ $id }}">{{ $name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="team1">Select <b>Round</b> in which you want to create a match :</label>
+                                                    <select name="rounds" id="rounds" class="form-control team-dropdown">
+                                                        <option value="" disabled selected>--- Select Round ---</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bonus_points_team1">Add Bonus for Team 1:</label>
+                                            <input type="text" name="bonus_points_team1" id="bonus_points_team1"  value="{{ old('bonus_points_team1', 0) }}" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bonus_points_team2">Add Bonus for Team 2:</label>
+                                            <input type="text" name="bonus_points_team2" id="bonus_points_team2"  value="{{ old('bonus_points_team2', 0) }}" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="match_date">Match Date:</label>
+                                            <input type="date" name="match_date" id="match_date" class="form-control">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Schedule Match</button>
+                                        <!-- end form-group -->
+                                    </div>
+                                    <!-- end col-8 -->
+                                </div>
+                                <!-- end row -->
+                            </fieldset>
+                            {{-- <fieldset>
+                                <!-- begin row -->
+                                <div class="row">
+                                    <!-- begin col-8 -->
+                                    <div class="col-xl-8 offset-xl-2">
+                                        <legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Set MATCH</legend>
+                                        <!-- begin form-group -->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="team1">Team 1:</label>
+                                                    <select name="team1_id" id="team1" class="form-control team-dropdown">
                                                     <option value="" disabled selected>Select Team</option>
 
                                                         @foreach ($teams as $id => $name)
@@ -152,7 +218,10 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <div class="form-group">
+                                            <label for="match_date">Add Bonus:</label>
+                                            <input type="text" name="bonus_points" id="bonus_points" class="form-control">
+                                        </div>
 
                                         <div class="form-group">
                                             <label for="match_date">Match Date:</label>
@@ -166,7 +235,7 @@
                                     <!-- end col-8 -->
                                 </div>
                                 <!-- end row -->
-                            </fieldset>
+                            </fieldset> --}}
                             <!-- end fieldset -->
                         </div>
                         <!-- end step-1 -->

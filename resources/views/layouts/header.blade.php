@@ -61,16 +61,19 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                               
+                                <a href="{{URL('/profile')}}" class="nav-link ">Profile</a>
+                                {{-- <a href="{{ URL('/Dashboard') }}" class="dropdown-item nav-link">Dashboard</a> --}}
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                                <a href="{{URL('/profile')}}" class="dropdown-item nav-link">Profile</a>
-                                <a href="{{URL('/myPicks')}}" class="dropdown-item nav-link">My Picks</a>
+                        {{-- <a href="{{URL('/myPicks')}}" class="nav-link">My Picks</a> --}}
+                                <a class="dropdown-item nav-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                             </div>
                         </li>
                         @else
@@ -88,7 +91,7 @@
              <!-- Add the class "menu-toggle" to the menu toggle link -->
 
             </div>
-            <script>
+            {{-- <script>
     $(document).ready(function () {
         $('.site-menu .nav-link').hover(
             function () {
@@ -105,7 +108,7 @@
             $('body').toggleClass('menu-open');
         });
     });
-</script>
+</script> --}}
 
 
 

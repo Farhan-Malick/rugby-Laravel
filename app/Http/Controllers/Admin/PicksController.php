@@ -14,7 +14,6 @@ class PicksController extends Controller
     {
         $user = User::findOrFail($id);
         $picks = $user->picks;
-
         return view('Admin.allpicks.score_chart', compact('user', 'picks'));
     }
 
@@ -29,12 +28,14 @@ class PicksController extends Controller
             // Retrieve the input values from the request
             $round1 = $request->input('round1');
             $round2 = $request->input('round2');
-            $total = $round1 + $round2;
+            $round3 = $request->input('round3');
+            $total = $round1 + $round2 + $round3;
 
             // Update the user's picks data
             $user->picks()->update([
                 'round1' => $round1,
                 'round2' => $round2,
+                'round3' => $round3,
                 'total' => $total,
             ]);
 

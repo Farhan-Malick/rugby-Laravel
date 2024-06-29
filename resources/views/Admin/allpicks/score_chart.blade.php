@@ -135,6 +135,12 @@
                                                 <input type="number" name="round2" placeholder="Set Round 2" data-parsley-group="step-1" data-parsley-required="true" class="form-control" />
                                             </div>
                                         </div>
+                                        <div class="form-group row m-b-10">
+                                            <label class="col-lg-3 text-lg-right col-form-label">Round 3</label>
+                                            <div class="col-lg-9 col-xl-6">
+                                                <input type="number" name="round3" placeholder="Set Round 3" data-parsley-group="step-1" data-parsley-required="true" class="form-control" />
+                                            </div>
+                                        </div>
                                         <!-- end form-group -->
                                         <!-- begin form-group -->
                                         <!-- <div class="form-group row m-b-10">

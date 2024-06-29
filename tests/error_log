@@ -1,0 +1,24 @@
+[10-Oct-2023 18:18:50 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php on line 7
+[10-Oct-2023 18:18:50 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php on line 7
+[10-Oct-2023 18:18:50 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php on line 7
+[10-Oct-2023 18:18:51 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php on line 7
+[10-Oct-2023 18:18:52 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php on line 7
+[10-Oct-2023 18:18:53 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/teclipse/lct.testing.gamesenable.com/tests/TestCase.php on line 7

@@ -15,12 +15,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('team1_id');
             $table->unsignedBigInteger('team2_id');
+            $table->float('bonus_points_team1')->default(0);
+            $table->float('bonus_points_team2')->default(0);
             $table->dateTime('match_date');
-            $table->timestamps();
-
             // Define foreign key constraints
             $table->foreign('team1_id')->references('id')->on('teams')->onDelete('cascade');
             $table->foreign('team2_id')->references('id')->on('teams')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
