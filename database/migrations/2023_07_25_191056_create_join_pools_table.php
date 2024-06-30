@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('join_pools', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
             $table->string('user_name')->nullable();
-            $table->foreignId('pool_id')->references('id')->on('set_pools');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('pool_id')->constrained('set_pools')->onDelete('cascade');
             $table->string('created_pool_id');
             $table->string('pool_name');
             $table->timestamps();
